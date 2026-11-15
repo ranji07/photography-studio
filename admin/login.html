@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZIRIA / Admin Login</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body class="login-page">
+
+<div class="login-container">
+
+    <h1>Studio Admin</h1>
+    <p>Sign in to manage your portfolio</p>
+
+    <form id="loginForm">
+
+        <label for="email">Email</label>
+        <input
+                type="email"
+                id="email"
+                placeholder="Admin email"
+                required
+        >
+
+        <label for="password">Password</label>
+        <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+        >
+
+        <button type="submit" id="loginButton">
+            Sign In
+        </button>
+
+        <p id="loginMessage"></p>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/admin/auth.js"></script>
+
+</body>
+</html>

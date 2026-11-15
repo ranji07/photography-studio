@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Category Management | Admin</title>
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body class="category-admin-page">
+
+<header class="category-admin-header">
+    <div class="category-admin-brand">
+        <span class="category-brand-name">STUDIO ADMIN</span>
+        <span class="category-brand-subtitle">CONTENT MANAGEMENT</span>
+    </div>
+
+    <nav class="category-admin-nav" aria-label="Admin navigation">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="media.html">Media Library</a>
+        <a href="categories.html" class="active">Categories</a>
+        <a href="enquiries.html">Enquiries</a>
+    </nav>
+</header>
+
+<main class="category-admin-main">
+
+    <section class="category-page-heading">
+        <div>
+            <p class="eyebrow">CONTENT ORGANISATION</p>
+            <h1>Category Management</h1>
+            <p class="category-page-description">
+                Create and organise the categories used across your portfolio.
+            </p>
+        </div>
+
+        <a href="media.html" class="category-back-link">
+            Back to Media Library
+        </a>
+    </section>
+
+    <p
+            id="categoryStatus"
+            class="category-status"
+            role="status"
+            aria-live="polite">
+    </p>
+
+    <section class="category-form-panel">
+
+        <div class="category-panel-heading">
+            <div>
+                <p class="eyebrow">CATEGORY DETAILS</p>
+                <h2 id="categoryFormHeading">Add New Category</h2>
+            </div>
+        </div>
+
+        <form id="categoryForm">
+
+            <div class="category-form-grid">
+
+                <div class="form-group">
+                    <label for="categoryName">Category Name *</label>
+
+                    <input
+                            type="text"
+                            id="categoryName"
+                            name="categoryName"
+                            placeholder="Example: Wedding"
+                            maxlength="80"
+                            required>
+                </div>
+
+                <div class="form-group">
+                    <label for="categorySlug">Category Slug *</label>
+
+                    <input
+                            type="text"
+                            id="categorySlug"
+                            name="categorySlug"
+                            placeholder="Example: wedding"
+                            maxlength="100"
+                            pattern="[a-z0-9]+(-[a-z0-9]+)*"
+                            required>
+
+                    <small>
+                        Lowercase letters, numbers and hyphens only.
+                    </small>
+                </div>
+
+            </div>
+
+            <div class="category-form-actions">
+
+                <button
+                        type="submit"
+                        id="saveCategoryBtn"
+                        class="category-primary-btn">
+                    Add Category
+                </button>
+
+                <button
+                        type="button"
+                        id="cancelCategoryEditBtn"
+                        class="category-secondary-btn"
+                        hidden>
+                    Cancel Edit
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <section class="category-list-panel">
+
+        <div class="category-panel-heading">
+            <div>
+                <p class="eyebrow">EXISTING CATEGORIES</p>
+                <h2>All Categories</h2>
+            </div>
+
+            <button
+                    type="button"
+                    id="refreshCategoriesBtn"
+                    class="category-secondary-btn">
+                Refresh
+            </button>
+        </div>
+
+        <div class="category-table-wrapper">
+
+            <table class="category-table">
+
+                <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Slug</th>
+                    <th>Media Count</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody id="categoryTableBody">
+                <tr>
+                    <td colspan="4">Loading categories...</td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="category-table-note">
+            Categories with assigned media cannot be deleted.
+            Reassign their media through the Media Library first.
+        </p>
+
+    </section>
+
+</main>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+
+<!-- Category Management -->
+<script src="../js/admin/categories.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,344 @@
+/* ==========================================
+   CONTACT PAGE
+========================================== */
+
+.contact-page {
+    background: #F3F0E9;
+    color: #171715;
+    font-family: "DM Sans", sans-serif;
+}
+
+.contact-header {
+    min-height: 80px;
+    padding: 15px 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    border-bottom: 1px solid #dedbd3;
+}
+
+.contact-logo {
+    color: #171715;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-decoration: none;
+}
+
+.contact-header nav {
+    display: flex;
+    gap: 28px;
+}
+
+.contact-header nav a {
+    color: #77736C;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.contact-header nav a.active,
+.contact-header nav a:hover {
+    color: #A48B69;
+}
+
+
+/* Hero */
+
+.contact-hero {
+    padding: 95px 20px 75px;
+    text-align: center;
+}
+
+.contact-hero .eyebrow {
+    color: #A48B69;
+    letter-spacing: 3px;
+    font-size: 10px;
+}
+
+.contact-hero h1 {
+    margin: 25px 0;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(55px, 8vw, 92px);
+    font-weight: 400;
+    line-height: 0.95;
+}
+
+.contact-hero > p:last-child {
+    color: #77736C;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* Contact layout */
+
+.contact-layout {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto 100px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 75px;
+    align-items: start;
+}
+
+
+/* Information panel */
+
+.contact-information {
+    padding-top: 15px;
+}
+
+.contact-information .eyebrow,
+.contact-form-panel .eyebrow {
+    color: #A48B69;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.contact-information h2,
+.contact-form-panel h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 20px 0;
+}
+
+.contact-information > p:not(.eyebrow) {
+    color: #77736C;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.contact-detail {
+    margin: 27px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dedbd3;
+}
+
+.contact-detail > span {
+    display: block;
+    color: #A48B69;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.contact-detail a,
+.contact-detail p {
+    color: #171715;
+    font-size: 14px;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.contact-whatsapp-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 22px;
+
+    background: #A48B69;
+    color: #171715;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+}
+
+.contact-whatsapp-button:hover {
+    background: #c0a783;
+}
+
+
+/* Form panel */
+
+.contact-form-panel {
+    padding: 35px;
+    background: #EAE6DD;
+    border: 1px solid #dedbd3;
+}
+
+.contact-form-panel h2 {
+    margin-bottom: 30px;
+}
+
+.contact-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.contact-form-group label {
+    color: #393832;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.contact-form-group input,
+.contact-form-group select,
+.contact-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px;
+
+    background: #F3F0E9;
+    color: #171715;
+
+    border: 1px solid #d2ccc0;
+    border-radius: 3px;
+
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.contact-form-group input:focus,
+.contact-form-group select:focus,
+.contact-form-group textarea:focus {
+    border-color: #A48B69;
+}
+
+.contact-form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form-group input::placeholder,
+.contact-form-group textarea::placeholder {
+    color: #969087;
+}
+
+
+/* Honeypot */
+
+.contact-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+
+/* Submit button */
+
+#submitEnquiryBtn {
+    width: 100%;
+    padding: 16px;
+
+    background: #171715;
+    color: #F3F0E9;
+
+    border: none;
+    cursor: pointer;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+#submitEnquiryBtn:hover {
+    background: #A48B69;
+    color: #171715;
+}
+
+#submitEnquiryBtn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+
+/* Form messages */
+
+.contact-message {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.contact-message.success {
+    color: #267b49;
+}
+
+.contact-message.error {
+    color: #b42318;
+}
+
+.contact-privacy-note {
+    margin-top: 20px;
+    color: #77736C;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+
+/* Footer */
+
+.contact-footer {
+    padding: 50px 20px;
+    text-align: center;
+    background: #EAE6DD;
+}
+
+.contact-footer p {
+    margin-top: 16px;
+    color: #77736C;
+    font-size: 11px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+    .contact-header {
+        flex-wrap: wrap;
+    }
+
+    .contact-header nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .contact-hero {
+        padding: 70px 15px;
+    }
+
+    .contact-hero h1 {
+        font-size: 53px;
+    }
+
+    .contact-form-panel {
+        padding: 22px;
+    }
+
+    .contact-information h2,
+    .contact-form-panel h2 {
+        font-size: 35px;
+    }
+
+}

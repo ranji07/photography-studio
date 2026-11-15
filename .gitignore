@@ -1,0 +1,22 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IntelliJ project files
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Local testing files
+coverage/

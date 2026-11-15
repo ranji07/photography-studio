@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Studio Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body>
+
+<header class="admin-header">
+    <h2>Studio Admin</h2>
+    <button id="logoutButton">Logout</button>
+</header>
+
+<main class="dashboard-container">
+
+    <h1>Welcome to your studio</h1>
+    <p>Manage your photography and videography portfolio.</p>
+
+    <div class="dashboard-links">
+
+        <a href="media.html">Manage Media</a>
+
+        <a href="categories.html">Manage Categories</a>
+
+        <a href="enquiries.html">View Enquiries</a>
+
+    </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/admin/dashboard.js"></script>
+
+</body>
+</html>

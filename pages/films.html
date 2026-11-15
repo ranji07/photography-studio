@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Films | Photography Portfolio</title>
+
+    <meta name="description"
+          content="Explore our cinematic wedding films and memorable moments.">
+
+    <!-- Google Fonts (optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- Films CSS -->
+    <link rel="stylesheet" href="../css/films.css">
+
+    <!-- Additional Navigation Styling -->
+    <style>
+        .films-nav {
+            min-height: 75px;
+            padding: 15px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #111;
+            border-bottom: 1px solid #302b24;
+        }
+
+        .films-brand {
+            color: #f5f1eb;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 25px;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .films-nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .films-nav-links a {
+            color: #c5a879;
+            font-family: "DM Sans", sans-serif;
+            font-size: 12px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+        }
+
+        .films-nav-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .films-nav {
+                padding: 15px 5%;
+            }
+
+            .films-brand {
+                font-size: 20px;
+            }
+
+            .films-nav-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+<!-- Navigation -->
+<header class="films-nav">
+
+    <a href="../index.html" class="films-brand">
+        ZIRIA
+    </a>
+
+    <nav class="films-nav-links">
+        <a href="../index.html">Home</a>
+        <a href="films.html">Films</a>
+    </nav>
+
+</header>
+
+
+<!-- Main Films Page -->
+<main id="mainContent" class="films-page">
+
+    <!-- Hero Section -->
+    <section class="films-hero">
+
+        <p class="films-kicker">
+            CINEMATIC STORIES
+        </p>
+
+        <h1 class="films-title">
+            Our Films
+        </h1>
+
+        <p class="films-subtitle">
+            Every frame tells a story.
+            Explore our collection of cinematic memories.
+        </p>
+
+    </section>
+
+
+    <!-- Video Gallery -->
+    <section class="films-section">
+
+        <div id="filmsGrid" class="films-grid" aria-live="polite">
+
+            <p id="filmsMessage" class="films-message">
+                Loading films...
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- Footer -->
+<footer style="
+        background:#171717;
+        color:#aaa49b;
+        text-align:center;
+        padding:25px 15px;
+        font-family:'DM Sans',sans-serif;
+        font-size:12px;
+        border-top:1px solid #302b24;
+    ">
+
+    © <span id="currentYear"></span> Your Studio.
+    All Rights Reserved.
+
+</footer>
+
+
+<!-- Current Year -->
+<script>
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+</script>
+
+
+<!-- Supabase Library: Load ONLY ONCE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Supabase Configuration -->
+<script src="../js/config.js"></script>
+
+<!-- Shared Supabase Client -->
+<script src="../js/supabase-client.js"></script>
+
+<!-- Films Page JavaScript -->
+<script src="../js/public/films.js"></script>
+
+</body>
+</html>

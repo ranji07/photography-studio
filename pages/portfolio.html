@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Photography Portfolio | Studio Name Bali
+    </title>
+
+    <meta name="description"
+          content="Explore our Bali photography portfolio featuring weddings, portraits, destination photography and creative editorial work.">
+
+    <link rel="canonical"
+          href="https://YOUR-DOMAIN.com/pages/portfolio.html">
+
+    <link rel="icon"
+          type="image/svg+xml"
+          href="../assets/images/favicon.svg">
+
+    <meta name="robots" content="index,follow">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:site_name"
+          content="Studio Name">
+
+    <meta property="og:title"
+          content="Photography Portfolio | Studio Name">
+
+    <meta property="og:description"
+          content="Explore wedding, portrait and destination photography from Bali.">
+
+    <meta property="og:url"
+          content="https://YOUR-DOMAIN.com/pages/portfolio.html">
+
+    <meta property="og:image"
+          content="https://YOUR-DOMAIN.com/assets/images/social-preview.jpg">
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Explore our photography portfolio featuring weddings, portraits, travel and destination photography in Bali, Indonesia.">
+
+    <title>Portfolio | Studio Name Photography</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/common.css">
+
+    <link rel="stylesheet" href="../css/portfolio.css">
+
+</head>
+
+<body class="portfolio-page">
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+<!-- =====================================
+     NAVIGATION
+===================================== -->
+
+<header class="portfolio-header">
+
+    <a href="../index.html" class="portfolio-logo">
+        ZIRIA
+    </a>
+
+    <nav class="portfolio-nav">
+
+        <a href="../index.html">Home</a>
+
+        <a href="portfolio.html" class="active">
+            Portfolio
+        </a>
+
+        <a href="films.html">Films</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+    <a href="contact.html" class="portfolio-contact-link">
+        BOOK A SESSION
+    </a>
+
+</header>
+
+
+<!-- =====================================
+     PORTFOLIO INTRODUCTION
+===================================== -->
+
+<main id="mainContent">
+
+    <section class="portfolio-hero">
+
+        <p class="eyebrow">
+            A COLLECTION OF STORIES
+        </p>
+
+        <h1>
+            The Art of<br>
+            Capturing Moments.
+        </h1>
+
+        <p class="portfolio-hero-description">
+
+            A visual collection of beautiful moments,
+            meaningful emotions and timeless stories
+            captured across Bali and beyond.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================
+         CATEGORY FILTERS
+    ===================================== -->
+
+    <section class="portfolio-category-filter-section">
+
+        <div class="portfolio-filter-heading">
+
+            <p class="eyebrow">
+                EXPLORE OUR WORK
+            </p>
+
+        </div>
+
+        <div
+                id="portfolioCategoryFilters"
+                class="portfolio-category-filters"
+                aria-label="Filter portfolio by category">
+
+            <span class="portfolio-filter-loading">
+                Loading categories...
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PORTFOLIO GALLERY
+    ===================================== -->
+
+    <section class="portfolio-gallery-section">
+
+        <div class="portfolio-gallery-heading">
+
+            <h2>Selected Works</h2>
+
+            <p>
+                Photography that tells a story.
+            </p>
+
+        </div>
+
+
+        <!-- Loading / Error / Empty Message -->
+
+        <div
+                id="portfolioMessage"
+                class="portfolio-message"
+                role="status"
+                aria-live="polite">
+
+            Loading photographs...
+
+        </div>
+
+
+        <!-- Dynamic gallery -->
+
+        <div
+                id="portfolioGrid"
+                class="portfolio-grid">
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         IMAGE LIGHTBOX
+    ===================================== -->
+
+    <div
+            id="portfolioLightbox"
+            class="portfolio-lightbox"
+            hidden>
+
+        <div
+                class="portfolio-lightbox-backdrop"
+                id="lightboxBackdrop">
+        </div>
+
+        <div
+                class="portfolio-lightbox-content"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Photograph preview">
+
+            <button
+                    type="button"
+                    id="closeLightbox"
+                    class="lightbox-close"
+                    aria-label="Close photograph preview">
+
+                &times;
+
+            </button>
+
+            <img
+                    id="lightboxImage"
+                    src=""
+                    alt="Selected portfolio photograph">
+
+            <div class="lightbox-details">
+
+                <h2 id="lightboxTitle"></h2>
+
+                <p id="lightboxDescription"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         CONTACT SECTION
+    ===================================== -->
+
+    <section class="portfolio-cta">
+
+        <p class="eyebrow">
+            YOUR STORY STARTS HERE
+        </p>
+
+        <h2>
+            Let's create something timeless.
+        </h2>
+
+        <a href="contact.html" class="portfolio-cta-button">
+            GET IN TOUCH
+        </a>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer class="portfolio-footer">
+
+    <a href="../index.html" class="portfolio-logo">
+        ZIRIA
+    </a>
+
+    <p>
+        Photography · Cinematography · Bali, Indonesia
+    </p>
+
+    <p class="copyright">
+        © 2026 Studio Name. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+
+<script src="../js/supabase-client.js"></script>
+
+<script src="../js/public/portfolio.js"></script>
+
+<script src="../js/public/portfolio-categories.js"></script>
+
+</body>
+</html>

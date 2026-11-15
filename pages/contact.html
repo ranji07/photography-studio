@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Contact our Bali photography and videography studio to enquire about weddings, events, portraits and cinematic films.">
+
+    <title>Contact & Booking | Studio Name</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/common.css">
+
+    <link rel="stylesheet" href="../css/contact.css">
+
+</head>
+
+<body class="contact-page">
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<!-- HEADER -->
+
+<header class="contact-header">
+
+    <a href="../index.html" class="contact-logo">
+        STUDIO / NAME
+    </a>
+
+    <nav>
+
+        <a href="../index.html">Home</a>
+
+        <a href="portfolio.html">Portfolio</a>
+
+        <a href="films.html">Films</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html" class="active">Contact</a>
+
+    </nav>
+
+</header>
+
+
+<main id="mainContent">
+
+    <!-- HERO -->
+
+    <section class="contact-hero">
+
+        <p class="eyebrow">LET'S TALK ABOUT YOUR STORY</p>
+
+        <h1>
+            Let's create<br>
+            something beautiful.
+        </h1>
+
+        <p>
+            Tell us about your upcoming celebration
+            or creative project.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT CONTENT -->
+
+    <section class="contact-layout">
+
+        <!-- CONTACT INFORMATION -->
+
+        <div class="contact-information">
+
+            <p class="eyebrow">GET IN TOUCH</p>
+
+            <h2>We'd love to hear from you.</h2>
+
+            <p>
+                Share your plans with us.
+                We'll get back to you about availability
+                and the services that best suit your project.
+            </p>
+
+
+            <div class="contact-detail">
+
+                <span>EMAIL</span>
+
+                <a id="studioEmailLink" href="#">
+                    Contact the studio
+                </a>
+
+            </div>
+
+
+            <div class="contact-detail">
+
+                <span>PHONE</span>
+
+                <a id="studioPhoneLink" href="#">
+                    Contact the studio
+                </a>
+
+            </div>
+
+
+            <div class="contact-detail">
+
+                <span>LOCATION</span>
+
+                <p id="studioContactLocation">
+                    Bali, Indonesia
+                </p>
+
+            </div>
+
+
+            <a
+                    href="#"
+                    id="contactWhatsapp"
+                    class="contact-whatsapp-button">
+
+                CHAT ON WHATSAPP →
+
+            </a>
+
+        </div>
+
+
+        <!-- ENQUIRY FORM -->
+
+        <div class="contact-form-panel">
+
+            <p class="eyebrow">BOOKING ENQUIRY</p>
+
+            <h2>Tell us about your project.</h2>
+
+
+            <form id="contactForm" novalidate>
+
+
+                <div class="contact-form-group">
+
+                    <label for="customerName">
+                        Your Name *
+                    </label>
+
+                    <input
+                            type="text"
+                            id="customerName"
+                            name="customerName"
+                            minlength="2"
+                            maxlength="100"
+                            autocomplete="name"
+                            placeholder="Enter your full name"
+                            required>
+
+                </div>
+
+
+                <div class="contact-form-group">
+
+                    <label for="customerEmail">
+                        Email Address *
+                    </label>
+
+                    <input
+                            type="email"
+                            id="customerEmail"
+                            name="customerEmail"
+                            maxlength="254"
+                            autocomplete="email"
+                            placeholder="your@email.com"
+                            required>
+
+                </div>
+
+
+                <div class="contact-form-group">
+
+                    <label for="customerPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                            type="tel"
+                            id="customerPhone"
+                            name="customerPhone"
+                            maxlength="30"
+                            autocomplete="tel"
+                            placeholder="Your contact number">
+
+                </div>
+
+
+                <div class="contact-form-group">
+
+                    <label for="serviceType">
+                        Service Required *
+                    </label>
+
+                    <select
+                            id="serviceType"
+                            name="serviceType"
+                            required>
+
+                        <option value="">
+                            Select a service
+                        </option>
+
+                        <option value="Wedding Photography">
+                            Wedding Photography
+                        </option>
+
+                        <option value="Pre Wedding Photography">
+                            Pre Wedding Photography
+                        </option>
+
+                        <option value="Portrait Photography">
+                            Portrait Photography
+                        </option>
+
+                        <option value="Event Photography">
+                            Event Photography
+                        </option>
+
+                        <option value="Cinematography">
+                            Cinematography
+                        </option>
+
+                        <option value="Photo and Video Editing">
+                            Photo and Video Editing
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="contact-form-group">
+
+                    <label for="eventDate">
+                        Event Date
+                    </label>
+
+                    <input
+                            type="date"
+                            id="eventDate"
+                            name="eventDate">
+
+                </div>
+
+
+                <div class="contact-form-group">
+
+                    <label for="customerMessage">
+                        Tell Us About Your Project *
+                    </label>
+
+                    <textarea
+                            id="customerMessage"
+                            name="customerMessage"
+                            rows="5"
+                            maxlength="2000"
+                            minlength="10"
+                            placeholder="Tell us about your event, location and requirements..."
+                            required></textarea>
+
+                </div>
+
+
+                <!-- Basic honeypot spam field -->
+
+                <div class="contact-honeypot"
+                     aria-hidden="true">
+
+                    <label for="website">
+                        Leave this field empty
+                    </label>
+
+                    <input
+                            type="text"
+                            id="website"
+                            name="website"
+                            tabindex="-1"
+                            autocomplete="off">
+
+                </div>
+
+
+                <button
+                        type="submit"
+                        id="submitEnquiryBtn">
+
+                    SEND ENQUIRY
+
+                </button>
+
+
+                <p
+                        id="contactFormMessage"
+                        role="status"
+                        aria-live="polite">
+
+                </p>
+
+
+                <p class="contact-privacy-note">
+                    Your information will only be used
+                    to respond to your enquiry.
+                </p>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="contact-footer">
+
+    <a href="../index.html" class="contact-logo">
+        STUDIO / NAME
+    </a>
+
+    <p id="contactFooterLocation">
+        Bali, Indonesia
+    </p>
+
+    <p>
+        © 2026 Studio Name. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+
+<script src="../js/supabase-client.js"></script>
+
+<script src="../js/public/contact.js"></script>
+
+</body>
+
+</html>

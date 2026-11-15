@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Enquiries | Studio Admin</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body class="enquiries-admin-page">
+
+
+<header class="enquiries-header">
+
+    <div>
+        <h2>STUDIO ADMIN</h2>
+        <p>CONTENT MANAGEMENT</p>
+    </div>
+
+    <nav>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="media.html">Media</a>
+
+        <a href="categories.html">Categories</a>
+
+        <a href="enquiries.html" class="active">
+            Enquiries
+        </a>
+
+        <button id="enquiryLogoutBtn" type="button">
+            Logout
+        </button>
+
+    </nav>
+
+</header>
+
+
+<main class="enquiries-container">
+
+
+    <!-- PAGE HEADING -->
+
+    <section class="enquiries-page-heading">
+
+        <p class="eyebrow">CUSTOMER RELATIONSHIPS</p>
+
+        <h1>Booking Enquiries</h1>
+
+        <p>
+            Review customer requests and manage
+            photography and videography bookings.
+        </p>
+
+    </section>
+
+
+    <p
+            id="enquiriesMessage"
+            role="status"
+            aria-live="polite">
+    </p>
+
+
+    <!-- SUMMARY CARDS -->
+
+    <section class="enquiry-stats">
+
+        <article class="enquiry-stat-card">
+
+            <span>Total Enquiries</span>
+
+            <h2 id="totalEnquiries">0</h2>
+
+        </article>
+
+
+        <article class="enquiry-stat-card">
+
+            <span>New</span>
+
+            <h2 id="newEnquiries">0</h2>
+
+        </article>
+
+
+        <article class="enquiry-stat-card">
+
+            <span>Contacted</span>
+
+            <h2 id="contactedEnquiries">0</h2>
+
+        </article>
+
+
+        <article class="enquiry-stat-card">
+
+            <span>Completed</span>
+
+            <h2 id="completedEnquiries">0</h2>
+
+        </article>
+
+    </section>
+
+
+    <!-- SEARCH AND FILTER -->
+
+    <section class="enquiry-toolbar">
+
+        <input
+                type="search"
+                id="enquirySearch"
+                placeholder="Search customer, email or service..."
+                autocomplete="off">
+
+
+        <select id="enquiryStatusFilter">
+
+            <option value="">All Status</option>
+
+            <option value="new">New</option>
+
+            <option value="contacted">Contacted</option>
+
+            <option value="confirmed">Confirmed</option>
+
+            <option value="completed">Completed</option>
+
+            <option value="closed">Closed</option>
+
+        </select>
+
+
+        <button
+                type="button"
+                id="refreshEnquiriesBtn">
+
+            Refresh
+
+        </button>
+
+    </section>
+
+
+    <!-- ENQUIRY TABLE -->
+
+    <section class="enquiry-table-section">
+
+        <div class="enquiry-table-wrapper">
+
+            <table class="enquiry-table">
+
+                <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+
+                    <th>Contact</th>
+
+                    <th>Service</th>
+
+                    <th>Event Date</th>
+
+                    <th>Message</th>
+
+                    <th>Status</th>
+
+                    <th>Submitted</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody id="enquiryTableBody">
+
+                <tr>
+
+                    <td colspan="8">
+                        Loading enquiries...
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+
+<script src="../js/supabase-client.js"></script>
+
+<script src="../js/admin/enquiries.js"></script>
+
+
+</body>
+
+</html>

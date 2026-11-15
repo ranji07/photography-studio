@@ -1,0 +1,595 @@
+/* ==========================================
+   PORTFOLIO PAGE
+========================================== */
+
+.portfolio-page {
+    background: #F3F0E9;
+    color: #171715;
+    font-family: "DM Sans", sans-serif;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.portfolio-header {
+    min-height: 85px;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    border-bottom: 1px solid #dedbd3;
+    background: #F3F0E9;
+}
+
+.portfolio-logo {
+    color: #171715;
+    text-decoration: none;
+
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+.portfolio-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.portfolio-nav a {
+    color: #77736C;
+    text-decoration: none;
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    transition: color 0.25s ease;
+}
+
+.portfolio-nav a:hover,
+.portfolio-nav a.active {
+    color: #A48B69;
+}
+
+.portfolio-contact-link {
+    color: #171715;
+    text-decoration: none;
+
+    border: 1px solid #A48B69;
+    padding: 12px 17px;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.portfolio-contact-link:hover {
+    background: #A48B69;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.portfolio-hero {
+    min-height: 400px;
+
+    padding: 100px 20px 75px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.portfolio-hero .eyebrow {
+    color: #A48B69;
+
+    font-size: 10px;
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+}
+
+.portfolio-hero h1 {
+    margin: 0;
+
+    color: #171715;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(55px, 8vw, 100px);
+
+    line-height: 0.95;
+    font-weight: 400;
+}
+
+.portfolio-hero-description {
+    max-width: 520px;
+
+    margin-top: 30px;
+
+    color: #77736C;
+
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+
+/* ==========================================
+   FILTER SECTION
+========================================== */
+
+.portfolio-category-filter-section {
+    padding: 30px 5% 55px;
+}
+
+.portfolio-filter-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.portfolio-filter-heading .eyebrow {
+    color: #A48B69;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.portfolio-category-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.portfolio-category-filter {
+    padding: 11px 20px;
+
+    color: #77736C;
+    background: transparent;
+
+    border: 1px solid #c8c1b5;
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+
+    transition: all 0.25s ease;
+}
+
+.portfolio-category-filter:hover {
+    border-color: #A48B69;
+    color: #171715;
+}
+
+.portfolio-category-filter.active {
+    background: #A48B69;
+    border-color: #A48B69;
+    color: #fff;
+}
+
+.portfolio-filter-loading {
+    color: #77736C;
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   GALLERY SECTION
+========================================== */
+
+.portfolio-gallery-section {
+    max-width: 1450px;
+    margin: 0 auto;
+
+    padding: 25px 6% 110px;
+}
+
+.portfolio-gallery-heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.portfolio-gallery-heading h2 {
+    margin: 0 0 12px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.portfolio-gallery-heading p {
+    color: #77736C;
+    font-size: 13px;
+}
+
+.portfolio-message {
+    text-align: center;
+    color: #77736C;
+
+    padding: 25px;
+
+    font-size: 14px;
+}
+
+.portfolio-message.error {
+    color: #b42318;
+}
+
+
+/* ==========================================
+   IMAGE GRID
+========================================== */
+
+.portfolio-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 35px 22px;
+}
+
+.portfolio-card {
+    min-width: 0;
+}
+
+.portfolio-image-button {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: #dedbd3;
+    border: none;
+
+    cursor: pointer;
+}
+
+.portfolio-image-button img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.65s ease;
+}
+
+.portfolio-card:hover .portfolio-image-button img {
+    transform: scale(1.05);
+}
+
+.portfolio-image-fallback {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: #77736C;
+    font-size: 13px;
+}
+
+.portfolio-image-fallback[hidden] {
+    display: none;
+}
+
+.portfolio-card-details {
+    padding: 16px 2px;
+}
+
+.portfolio-card-category {
+    color: #A48B69;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin: 0 0 8px;
+}
+
+.portfolio-card-details h3 {
+    margin: 0;
+
+    color: #171715;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.portfolio-card-description {
+    color: #77736C;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    margin: 8px 0 0;
+}
+
+
+/* IMPORTANT: Category filtering uses this attribute. */
+
+[data-portfolio-media][hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================
+   LIGHTBOX
+========================================== */
+
+.portfolio-lightbox[hidden] {
+    display: none !important;
+}
+
+.portfolio-lightbox {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+}
+
+.portfolio-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.93);
+}
+
+.portfolio-lightbox-content {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1050px;
+    max-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portfolio-lightbox-content img {
+    max-width: 100%;
+    max-height: 72vh;
+
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+
+    top: -42px;
+    right: 0;
+
+    color: white;
+    background: transparent;
+
+    border: none;
+
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.lightbox-details {
+    padding-top: 18px;
+    text-align: center;
+}
+
+.lightbox-details h2 {
+    color: #F3F0E9;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.lightbox-details p {
+    color: #aaa49a;
+    font-size: 13px;
+}
+
+body.portfolio-lightbox-open {
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   CONTACT CTA
+========================================== */
+
+.portfolio-cta {
+    padding: 100px 20px;
+
+    text-align: center;
+
+    background: #171715;
+    color: #F3F0E9;
+}
+
+.portfolio-cta .eyebrow {
+    color: #A48B69;
+    letter-spacing: 3px;
+    font-size: 10px;
+}
+
+.portfolio-cta h2 {
+    max-width: 800px;
+    margin: 20px auto 35px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 400;
+
+    font-size: clamp(35px, 5vw, 60px);
+}
+
+.portfolio-cta-button {
+    display: inline-block;
+
+    color: #F3F0E9;
+    text-decoration: none;
+
+    border: 1px solid #A48B69;
+
+    padding: 15px 30px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    transition: all 0.3s ease;
+}
+
+.portfolio-cta-button:hover {
+    background: #A48B69;
+    color: #171715;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.portfolio-footer {
+    padding: 55px 20px;
+
+    text-align: center;
+
+    background: #F3F0E9;
+}
+
+.portfolio-footer > p {
+    margin-top: 18px;
+
+    color: #77736C;
+    font-size: 12px;
+}
+
+.portfolio-footer .copyright {
+    margin-top: 35px;
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 900px) {
+
+    .portfolio-header {
+        padding: 20px 5%;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .portfolio-header {
+        min-height: 70px;
+    }
+
+    .portfolio-logo {
+        font-size: 14px;
+    }
+
+    .portfolio-contact-link {
+        padding: 9px 11px;
+        font-size: 9px;
+    }
+
+    .portfolio-nav {
+        gap: 14px;
+    }
+
+    .portfolio-nav a {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+    }
+
+    .portfolio-hero {
+        min-height: 330px;
+        padding: 75px 18px 55px;
+    }
+
+    .portfolio-hero h1 {
+        font-size: 55px;
+    }
+
+    .portfolio-hero-description {
+        font-size: 12px;
+    }
+
+    .portfolio-category-filters {
+        gap: 8px;
+    }
+
+    .portfolio-category-filter {
+        padding: 9px 13px;
+        font-size: 9px;
+    }
+
+    .portfolio-gallery-section {
+        padding: 20px 5% 75px;
+    }
+
+    .portfolio-gallery-heading h2 {
+        font-size: 38px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .portfolio-card-details h3 {
+        font-size: 24px;
+    }
+
+    .portfolio-cta {
+        padding: 75px 20px;
+    }
+
+}

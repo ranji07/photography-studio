@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Media Management | Studio Admin</title>
+
+    <meta name="description"
+          content="Manage studio photography, films and portfolio content.">
+
+    <!-- Admin Styles -->
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet">
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body>
+
+<!-- =================================================
+     ADMIN NAVIGATION
+================================================= -->
+
+<header class="admin-header">
+
+    <h2>Studio Admin</h2>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="media.html" class="active">Media</a>
+
+        <a href="categories.html">Categories</a>
+
+        <a href="enquiries.html">Enquiries</a>
+
+        <button type="button" id="logoutBtn">
+            Logout
+        </button>
+    </nav>
+
+</header>
+
+
+<main class="admin-container">
+
+    <!-- =================================================
+         PAGE HEADING
+    ================================================= -->
+
+    <section class="admin-page-heading">
+
+        <p class="eyebrow">CONTENT MANAGEMENT</p>
+
+        <h1>Media Management</h1>
+
+        <p>
+            Upload, organize and manage your photography
+            and cinematic collections.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         MEDIA UPLOAD SECTION
+    ================================================= -->
+
+    <section class="upload-card">
+
+        <div class="upload-section-heading">
+
+            <p class="eyebrow">ADD NEW CONTENT</p>
+
+            <h2>Upload Media</h2>
+
+            <p>
+                Add photographs and films to your studio portfolio.
+            </p>
+
+        </div>
+
+
+        <form id="mediaUploadForm">
+
+            <!-- Media Title -->
+
+            <div class="form-group">
+
+                <label for="mediaTitle">
+                    Title *
+                </label>
+
+                <input
+                        type="text"
+                        id="mediaTitle"
+                        name="mediaTitle"
+                        placeholder="e.g. A Bali Wedding Story"
+                        maxlength="150"
+                        required
+                >
+
+            </div>
+
+
+            <!-- Media Description -->
+
+            <div class="form-group">
+
+                <label for="mediaDescription">
+                    Description
+                </label>
+
+                <textarea
+                        id="mediaDescription"
+                        name="mediaDescription"
+                        rows="4"
+                        maxlength="2000"
+                        placeholder="Write a short description..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- Category -->
+
+            <div class="form-group">
+
+                <label for="mediaCategory">
+                    Category *
+                </label>
+
+                <select
+                        id="mediaCategory"
+                        name="mediaCategory"
+                        required
+                >
+
+                    <option value="">
+                        Loading categories...
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Media Type -->
+
+            <div class="form-group">
+
+                <label for="mediaType">
+                    Media Type *
+                </label>
+
+                <select
+                        id="mediaType"
+                        name="mediaType"
+                        required
+                >
+
+                    <!-- Frontend value must remain photo -->
+                    <option value="photo">
+                        Photography
+                    </option>
+
+                    <option value="video">
+                        Video / Film
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- File Input -->
+
+            <div class="form-group">
+
+                <label for="mediaFile">
+                    Choose File *
+                </label>
+
+                <input
+                        type="file"
+                        id="mediaFile"
+                        name="mediaFile"
+                        accept="image/jpeg,image/png,image/webp"
+                        required
+                >
+
+                <small id="fileHelp">
+                    Accepted: JPG, PNG, WebP.
+                    Maximum size: 50 MB.
+                </small>
+
+            </div>
+
+
+            <!-- Publish Option -->
+
+            <div class="form-group publish-option">
+
+                <input
+                        type="checkbox"
+                        id="isPublished"
+                        name="isPublished"
+                >
+
+                <label for="isPublished">
+                    Publish immediately
+                </label>
+
+            </div>
+
+
+            <!-- Upload Button -->
+
+            <button
+                    type="submit"
+                    id="uploadBtn"
+            >
+                Upload Media
+            </button>
+
+
+            <!-- Upload Message -->
+
+            <p
+                    id="uploadMessage"
+                    role="status"
+                    aria-live="polite"
+            ></p>
+
+        </form>
+
+    </section>
+
+
+    <!-- =================================================
+         MEDIA LIBRARY SECTION
+    ================================================= -->
+
+    <section
+            class="media-library-section"
+            aria-labelledby="mediaLibraryTitle"
+    >
+
+        <!-- Heading -->
+
+        <div class="media-library-header">
+
+            <p class="eyebrow">YOUR CONTENT</p>
+
+            <h1 id="mediaLibraryTitle">
+                Media Library
+            </h1>
+
+            <p>
+                Preview, edit and manage your uploaded
+                photographs and films.
+            </p>
+
+        </div>
+
+
+        <!-- Filters -->
+
+        <div class="media-library-filters">
+
+            <!-- Category Filter -->
+
+            <select id="filterCategory">
+
+                <option value="">
+                    All Categories
+                </option>
+
+            </select>
+
+
+            <!-- Media Type Filter -->
+
+            <select id="filterMediaType">
+
+                <option value="">
+                    All Media
+                </option>
+
+                <!-- Database value -->
+                <option value="image">
+                    Photography
+                </option>
+
+                <option value="video">
+                    Video
+                </option>
+
+            </select>
+
+
+            <!-- Publication Filter -->
+
+            <select id="filterStatus">
+
+                <option value="">
+                    All Status
+                </option>
+
+                <option value="published">
+                    Published
+                </option>
+
+                <option value="draft">
+                    Draft
+                </option>
+
+            </select>
+
+
+            <!-- Refresh -->
+
+            <button
+                    type="button"
+                    id="refreshMediaBtn"
+            >
+                Refresh Media
+            </button>
+
+        </div>
+
+
+        <!-- Media Library Message -->
+
+        <p
+                id="libraryMessage"
+                role="status"
+                aria-live="polite"
+        ></p>
+
+
+        <!-- Media Grid -->
+
+        <div
+                id="mediaGrid"
+                class="media-grid"
+                aria-live="polite"
+        >
+
+            <p>Loading media...</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         EDIT MEDIA MODAL
+    ================================================= -->
+
+    <div
+            id="editMediaModal"
+            class="edit-modal"
+            hidden
+    >
+
+        <!-- Modal Background -->
+
+        <div
+                class="edit-modal-overlay"
+                id="editModalOverlay"
+        ></div>
+
+
+        <!-- Modal Content -->
+
+        <div
+                class="edit-modal-content"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="editModalTitle"
+        >
+
+            <!-- Modal Header -->
+
+            <div class="edit-modal-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        CONTENT MANAGEMENT
+                    </p>
+
+                    <h2 id="editModalTitle">
+                        Edit Media
+                    </h2>
+
+                </div>
+
+
+                <button
+                        type="button"
+                        id="closeEditModal"
+                        class="modal-close-btn"
+                        aria-label="Close edit form"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- Edit Form -->
+
+            <form id="editMediaForm">
+
+                <input
+                        type="hidden"
+                        id="editMediaId"
+                >
+
+
+                <!-- Title -->
+
+                <div class="form-group">
+
+                    <label for="editMediaTitle">
+                        Media Title *
+                    </label>
+
+                    <input
+                            type="text"
+                            id="editMediaTitle"
+                            maxlength="150"
+                            required
+                    >
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="editMediaDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                            id="editMediaDescription"
+                            rows="4"
+                            maxlength="2000"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="form-group">
+
+                    <label for="editMediaCategory">
+                        Category *
+                    </label>
+
+                    <select
+                            id="editMediaCategory"
+                            required
+                    >
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Media Type -->
+
+                <div class="form-group">
+
+                    <label for="editMediaType">
+                        Media Type
+                    </label>
+
+                    <input
+                            type="text"
+                            id="editMediaType"
+                            readonly
+                    >
+
+                    <small>
+                        Media type cannot be changed without
+                        replacing the file.
+                    </small>
+
+                </div>
+
+
+                <!-- Publication Status -->
+
+                <div class="form-group">
+
+                    <label for="editMediaStatus">
+                        Publication Status *
+                    </label>
+
+                    <select
+                            id="editMediaStatus"
+                            required
+                    >
+
+                        <option value="false">
+                            Draft
+                        </option>
+
+                        <option value="true">
+                            Published
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Edit Message -->
+
+                <p
+                        id="editMediaMessage"
+                        role="status"
+                        aria-live="polite"
+                ></p>
+
+
+                <!-- Edit Actions -->
+
+                <div class="edit-modal-actions">
+
+                    <button
+                            type="button"
+                            id="cancelEditBtn"
+                            class="cancel-edit-btn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                            type="submit"
+                            id="saveEditBtn"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BULK MEDIA MANAGEMENT
+    ================================================= -->
+
+    <section
+            class="bulk-media-section"
+            aria-labelledby="bulkMediaTitle"
+    >
+
+        <!-- Heading -->
+
+        <div class="bulk-media-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    CONTENT CONTROL
+                </p>
+
+                <h2 id="bulkMediaTitle">
+                    Bulk Media Management
+                </h2>
+
+                <p>
+                    Search, select and manage multiple
+                    photographs and videos together.
+                </p>
+
+            </div>
+
+
+            <button
+                    type="button"
+                    id="refreshBulkMedia"
+                    class="bulk-refresh-btn"
+            >
+                Refresh
+            </button>
+
+        </div>
+
+
+        <!-- Search and Filters -->
+
+        <div class="bulk-toolbar">
+
+            <input
+                    type="search"
+                    id="bulkMediaSearch"
+                    placeholder="Search by media title..."
+                    autocomplete="off"
+            >
+
+
+            <select id="bulkMediaTypeFilter">
+
+                <option value="">
+                    All Media
+                </option>
+
+                <option value="image">
+                    Photography
+                </option>
+
+                <option value="video">
+                    Videos
+                </option>
+
+            </select>
+
+
+            <select id="bulkMediaStatusFilter">
+
+                <option value="">
+                    All Status
+                </option>
+
+                <option value="published">
+                    Published
+                </option>
+
+                <option value="draft">
+                    Draft
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Selection Toolbar -->
+
+        <div class="bulk-selection-toolbar">
+
+            <label class="bulk-select-all">
+
+                <input
+                        type="checkbox"
+                        id="selectAllBulkMedia"
+                >
+
+                Select all visible
+
+            </label>
+
+
+            <span id="bulkSelectedCount">
+                0 selected
+            </span>
+
+        </div>
+
+
+        <!-- Media Table -->
+
+        <div class="bulk-table-wrapper">
+
+            <table class="bulk-media-table">
+
+                <thead>
+
+                <tr>
+
+                    <th>Select</th>
+
+                    <th>Title</th>
+
+                    <th>Type</th>
+
+                    <th>Category</th>
+
+                    <th>Status</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody id="bulkMediaTableBody">
+
+                <tr>
+                    <td colspan="6">
+                        Loading media...
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Bulk Actions -->
+
+        <div class="bulk-actions">
+
+            <button
+                    type="button"
+                    id="bulkPublishBtn"
+                    disabled
+            >
+                Publish Selected
+            </button>
+
+
+            <button
+                    type="button"
+                    id="bulkUnpublishBtn"
+                    disabled
+            >
+                Unpublish Selected
+            </button>
+
+
+            <button
+                    type="button"
+                    id="bulkDeleteBtn"
+                    class="bulk-delete-btn"
+                    disabled
+            >
+                Delete Selected
+            </button>
+
+        </div>
+
+
+        <!-- Bulk Message -->
+
+        <p
+                id="bulkMediaMessage"
+                role="status"
+                aria-live="polite"
+        ></p>
+
+    </section>
+
+</main>
+
+
+<!-- =================================================
+     JAVASCRIPT INITIALIZATION
+================================================= -->
+
+<!-- Supabase Library: Load once -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Configuration -->
+<script src="../js/config.js"></script>
+
+<!-- Shared Supabase Client -->
+<script src="../js/supabase-client.js"></script>
+
+<!-- Upload Functionality -->
+<script src="../js/admin/upload.js"></script>
+
+<!-- Media Library Functionality -->
+<script src="../js/admin/media-library.js"></script>
+
+<!-- Bulk Media Functionality -->
+<script src="../js/admin/media-bulk.js"></script>
+
+
+</body>
+</html>
