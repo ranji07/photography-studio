@@ -86,8 +86,11 @@
         image.className = "story-card-image";
         image.src = safeImageUrl(project.cover_image_url);
         image.alt = project.title || "Photography project";
-        image.loading = "lazy";
-        image.decoding = "async";
+       image.loading = "lazy";
+       image.decoding = "async";
+       image.width = 1200;
+       image.height = 1500;
+       image.sizes = "(max-width: 650px) 100vw, 50vw";
 
         image.addEventListener("error", function () {
             image.src = "../assets/images/studio-about.jpg";

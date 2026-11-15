@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Enquiry Analytics | Admin</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-analytics.css">
+
+</head>
+
+<body class="admin-analytics-page">
+
+<div class="analytics-layout">
+
+    <aside class="analytics-sidebar">
+
+        <a href="dashboard.html" class="analytics-brand">
+            STUDIO
+            <span>ADMIN</span>
+        </a>
+
+        <nav aria-label="Admin navigation">
+
+            <a href="dashboard.html">Dashboard</a>
+            <a href="media.html">Media Library</a>
+            <a href="categories.html">Categories</a>
+            <a href="enquiries.html">Enquiries</a>
+            <a href="projects.html">Projects & Stories</a>
+            <a href="testimonials.html">Testimonials</a>
+
+            <a href="analytics.html"
+               class="active"
+               aria-current="page">
+                Analytics
+            </a>
+
+        </nav>
+
+        <button type="button"
+                id="analytics-logout"
+                class="analytics-logout">
+            Log out
+        </button>
+
+    </aside>
+
+
+    <main class="analytics-main">
+
+        <!-- HEADER -->
+
+        <header class="analytics-header">
+
+            <div>
+                <p class="analytics-eyebrow">
+                    STUDIO PERFORMANCE
+                </p>
+
+                <h1>Enquiry analytics</h1>
+
+                <p>
+                    Understand customer interest, acquisition sources
+                    and enquiry outcomes.
+                </p>
+            </div>
+
+            <button type="button"
+                    id="analytics-refresh"
+                    class="analytics-refresh">
+                ↻ Refresh data
+            </button>
+
+        </header>
+
+
+        <!-- FILTERS -->
+
+        <section class="analytics-filter-panel">
+
+            <div class="analytics-range-buttons">
+
+                <button type="button"
+                        class="analytics-range active"
+                        data-range-days="7">
+                    7 days
+                </button>
+
+                <button type="button"
+                        class="analytics-range"
+                        data-range-days="30">
+                    30 days
+                </button>
+
+                <button type="button"
+                        class="analytics-range"
+                        data-range-days="90">
+                    90 days
+                </button>
+
+                <button type="button"
+                        class="analytics-range"
+                        data-range-days="365">
+                    365 days
+                </button>
+
+            </div>
+
+            <div class="analytics-custom-date">
+
+                <label>
+                    <span>From</span>
+                    <input type="date" id="analytics-start-date">
+                </label>
+
+                <label>
+                    <span>To</span>
+                    <input type="date" id="analytics-end-date">
+                </label>
+
+                <button type="button"
+                        id="analytics-apply-date"
+                        class="analytics-apply-date">
+                    Apply
+                </button>
+
+            </div>
+
+            <p id="analytics-period-label"
+               class="analytics-period-label">
+                Loading reporting period...
+            </p>
+
+        </section>
+
+
+        <!-- LOADING / ERROR -->
+
+        <div id="analytics-loading"
+             class="analytics-state">
+            <span class="analytics-spinner"></span>
+            <p>Preparing studio analytics...</p>
+        </div>
+
+        <div id="analytics-error"
+             class="analytics-error"
+             role="alert"
+             hidden>
+        </div>
+
+
+        <!-- DASHBOARD -->
+
+        <div id="analytics-dashboard" hidden>
+
+
+            <!-- KPI CARDS -->
+
+            <section class="analytics-kpi-grid">
+
+                <article class="analytics-kpi">
+                    <span>Total enquiries</span>
+                    <strong id="analytics-total">0</strong>
+                    <small id="analytics-total-comparison">
+                        Selected period
+                    </small>
+                </article>
+
+                <article class="analytics-kpi">
+                    <span>Converted projects</span>
+                    <strong id="analytics-converted">0</strong>
+                    <small>Based on converted status</small>
+                </article>
+
+                <article class="analytics-kpi">
+                    <span>Not marked converted</span>
+                    <strong id="analytics-not-converted">0</strong>
+                    <small>May include cancelled enquiries</small>
+                </article>
+
+                <article class="analytics-kpi analytics-kpi-highlight">
+                    <span>Conversion rate</span>
+                    <strong id="analytics-conversion-rate">0%</strong>
+                    <small id="analytics-previous-rate">
+                        Previous period: 0%
+                    </small>
+                </article>
+
+            </section>
+
+
+            <!-- TIMELINE -->
+
+            <section class="analytics-panel">
+
+                <div class="analytics-panel-heading">
+                    <div>
+                        <p class="analytics-eyebrow">ENQUIRY ACTIVITY</p>
+                        <h2>Enquiry trend</h2>
+                    </div>
+
+                    <span>Daily enquiries</span>
+                </div>
+
+                <div id="analytics-timeline"
+                     class="analytics-timeline">
+                </div>
+
+            </section>
+
+
+            <!-- STATUS AND SERVICE -->
+
+            <section class="analytics-chart-grid">
+
+                <article class="analytics-panel">
+
+                    <div class="analytics-panel-heading">
+                        <div>
+                            <p class="analytics-eyebrow">PIPELINE</p>
+                            <h2>Enquiry status</h2>
+                        </div>
+                    </div>
+
+                    <div id="analytics-statuses"
+                         class="analytics-bar-list">
+                    </div>
+
+                </article>
+
+
+                <article class="analytics-panel">
+
+                    <div class="analytics-panel-heading">
+                        <div>
+                            <p class="analytics-eyebrow">CUSTOMER INTEREST</p>
+                            <h2>Service demand</h2>
+                        </div>
+                    </div>
+
+                    <div id="analytics-services"
+                         class="analytics-bar-list">
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- SOURCE AND CAMPAIGN -->
+
+            <section class="analytics-chart-grid">
+
+                <article class="analytics-panel">
+
+                    <div class="analytics-panel-heading">
+                        <div>
+                            <p class="analytics-eyebrow">ACQUISITION</p>
+                            <h2>Enquiry sources</h2>
+                        </div>
+                    </div>
+
+                    <div id="analytics-sources"
+                         class="analytics-bar-list">
+                    </div>
+
+                    <p class="analytics-chart-note">
+                        Older records are shown as Legacy / unknown.
+                    </p>
+
+                </article>
+
+
+                <article class="analytics-panel">
+
+                    <div class="analytics-panel-heading">
+                        <div>
+                            <p class="analytics-eyebrow">CAMPAIGN PERFORMANCE</p>
+                            <h2>UTM campaigns</h2>
+                        </div>
+                    </div>
+
+                    <div id="analytics-campaigns"
+                         class="analytics-bar-list">
+                    </div>
+
+                    <p class="analytics-chart-note">
+                        Campaign data is recorded when visitors arrive
+                        through links containing UTM parameters.
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- RECENT ENQUIRIES -->
+
+            <section class="analytics-panel analytics-recent-panel">
+
+                <div class="analytics-panel-heading">
+                    <div>
+                        <p class="analytics-eyebrow">LATEST ACTIVITY</p>
+                        <h2>Recent enquiries</h2>
+                    </div>
+
+                    <a href="enquiries.html">
+                        Open enquiry manager ↗
+                    </a>
+                </div>
+
+                <div class="analytics-table-wrap">
+
+                    <table class="analytics-table">
+
+                        <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Received</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="analytics-recent">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <p class="analytics-footer-note">
+                Reports use enquiry creation dates in the Asia/Kolkata
+                timezone. Conversion is calculated from the status
+                values configured in the analytics database function.
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/admin/analytics.js"></script>
+
+</body>
+</html>

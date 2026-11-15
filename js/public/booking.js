@@ -421,7 +421,10 @@
             service_type: data.serviceType,
             event_date: data.eventDate || null,
             message: buildEnquiryMessage(data),
-            status: "new"
+            status: "new",
+
+            // Step 23 - attribution
+            ...window.getEnquiryAttribution()
         };
 
         isSubmitting = true;

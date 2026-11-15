@@ -125,6 +125,16 @@
             image.loading = "lazy";
             image.decoding = "async";
 
+            if (index === 0) {
+                image.width = 1200;
+                image.height = 675;
+                image.sizes = "100vw";
+            } else {
+                image.width = 800;
+                image.height = 600;
+                image.sizes = "(max-width: 650px) 100vw, 50vw";
+            }
+
             image.addEventListener("error", function () {
                 image.src = fallbackImage;
             }, { once: true });
