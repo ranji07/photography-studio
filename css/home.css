@@ -1053,3 +1053,49 @@
 .home-about-image-fallback[hidden] {
     display: none !important;
 }
+/* Editorial homepage refinements */
+
+.home-intro {
+    position: relative;
+}
+
+.home-intro h2 {
+    letter-spacing: -1.5px;
+}
+
+.home-section-heading {
+    align-items: flex-end;
+}
+
+.home-featured-card {
+    cursor: pointer;
+}
+
+.home-featured-card img {
+    filter: saturate(0.92);
+}
+
+.home-featured-card:hover img {
+    filter: saturate(1.08);
+}
+
+.home-booking {
+    min-height: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+
+    .home-intro {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .home-booking {
+        min-height: 340px;
+    }
+
+}

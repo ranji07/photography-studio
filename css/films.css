@@ -214,3 +214,34 @@ body {
     }
 
 }
+/* Cinematic film experience */
+
+.films-heading {
+    padding-top: 30px;
+}
+
+.film-card {
+    overflow: hidden;
+}
+
+.film-video {
+    background: #090909;
+    border: 1px solid rgba(164,139,105,.2);
+    transition: border-color 300ms ease;
+}
+
+.film-card:hover .film-video {
+    border-color: #A48B69;
+}
+
+.film-details {
+    padding: 22px 4px;
+}
+
+.film-details h2 {
+    transition: color 250ms ease;
+}
+
+.film-card:hover .film-details h2 {
+    color: #A48B69;
+}

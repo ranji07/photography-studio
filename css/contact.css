@@ -342,3 +342,34 @@
     }
 
 }
+/* Booking form refinements */
+
+.contact-form-panel {
+    transition: border-color 300ms ease;
+}
+
+.contact-form-panel:focus-within {
+    border-color: #A48B69;
+}
+
+.contact-form-group input,
+.contact-form-group textarea,
+.contact-form-group select {
+    transition:
+        border-color 250ms ease,
+        background 250ms ease;
+}
+
+.contact-form-group input:focus,
+.contact-form-group textarea:focus,
+.contact-form-group select:focus {
+    background: #fffdf8;
+}
+
+#submitEnquiryBtn {
+    transition: all 250ms ease;
+}
+
+#submitEnquiryBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}

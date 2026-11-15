@@ -59,8 +59,8 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/common.css">
-
     <link rel="stylesheet" href="../css/portfolio.css">
+    <link rel="stylesheet" href="../css/experience.css">
 
 </head>
 
@@ -92,6 +92,9 @@
 
         <a href="contact.html">Contact</a>
 
+        <a href="stories.html">Stories</a>
+
+        <a href="showreel.html">Showreel</a>
     </nav>
 
     <a href="contact.html" class="portfolio-contact-link">
@@ -227,7 +230,30 @@
                 &times;
 
             </button>
+            <!-- Previous image -->
 
+            <button
+                    type="button"
+                    id="lightboxPrevious"
+                    class="lightbox-arrow"
+                    aria-label="Previous photograph">
+
+                &#8249;
+
+            </button>
+
+
+            <!-- Next image -->
+
+            <button
+                    type="button"
+                    id="lightboxNext"
+                    class="lightbox-arrow"
+                    aria-label="Next photograph">
+
+                &#8250;
+
+            </button>
             <img
                     id="lightboxImage"
                     src=""
@@ -240,7 +266,14 @@
                 <p id="lightboxDescription"></p>
 
             </div>
+            <p
+                    id="lightboxCounter"
+                    class="lightbox-counter"
+                    aria-live="polite">
 
+                1 / 1
+
+            </p>
         </div>
 
     </div>
@@ -303,6 +336,8 @@
 <script src="../js/public/portfolio.js"></script>
 
 <script src="../js/public/portfolio-categories.js"></script>
+
+<script src="../js/public/experience.js"></script>
 
 </body>
 </html>

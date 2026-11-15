@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Showreel | Photography & Films</title>
+
+    <meta name="description"
+          content="Explore our cinematic wedding films, destination stories and visual experiences.">
+
+    <meta name="theme-color" content="#11110f">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/experience.css">
+    <link rel="stylesheet" href="../css/showreel.css">
+</head>
+
+<body class="showreel-page">
+
+<header class="showreel-header">
+
+    <a href="../index.html" class="showreel-brand">
+        <span class="showreel-brand-main">STUDIO</span>
+        <span class="showreel-brand-sub">PHOTOGRAPHY & FILMS</span>
+    </a>
+
+    <nav class="showreel-navigation" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="films.html">Films</a>
+        <a href="stories.html">Stories</a>
+        <a href="showreel.html" aria-current="page">Showreel</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <a href="contact.html" class="showreel-header-cta">
+        Let's talk <span aria-hidden="true">↗</span>
+    </a>
+
+</header>
+
+<main>
+
+    <!-- ==================================
+         CINEMATIC HERO
+    =================================== -->
+
+    <section class="showreel-hero">
+
+        <video
+                id="showreel-hero-video"
+                class="showreel-hero-video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="../assets/images/studio-about.jpg"
+                aria-hidden="true">
+        </video>
+
+        <div class="showreel-hero-overlay"></div>
+
+        <div class="showreel-hero-content">
+
+            <p class="showreel-eyebrow">
+                PHOTOGRAPHY · FILMS · STORIES
+            </p>
+
+            <h1>
+                Life, in<br>
+                <em>beautiful motion.</em>
+            </h1>
+
+            <p id="showreel-hero-description">
+                A collection of moments, emotions and stories,
+                thoughtfully captured through our lens.
+            </p>
+
+            <div class="showreel-hero-actions">
+
+                <button
+                        type="button"
+                        id="showreel-watch-featured"
+                        class="showreel-watch-button"
+                        disabled>
+                    <span class="showreel-play-icon" aria-hidden="true">▶</span>
+                    Watch the showreel
+                </button>
+
+                <a href="#film-collection" class="showreel-explore-link">
+                    Explore films <span aria-hidden="true">↓</span>
+                </a>
+
+            </div>
+
+            <p id="showreel-hero-status"
+               class="showreel-hero-status"
+               role="status"
+               aria-live="polite">
+                Discovering our films...
+            </p>
+
+        </div>
+
+        <div class="showreel-hero-bottom">
+            <span>CAPTURED WITH INTENTION</span>
+            <span id="showreel-film-count">— FILMS</span>
+        </div>
+
+        <div class="showreel-scroll-indicator" aria-hidden="true">
+            SCROLL TO EXPLORE <span>↓</span>
+        </div>
+
+    </section>
+
+
+    <!-- ==================================
+         INTRODUCTION
+    =================================== -->
+
+    <section class="showreel-intro">
+
+        <p class="showreel-eyebrow">OUR VISUAL WORLD</p>
+
+        <h2>
+            Not just films.<br>
+            <em>Feelings you can revisit.</em>
+        </h2>
+
+        <p>
+            From intimate celebrations to destination weddings,
+            we create films that bring you back to the moments
+            that matter most.
+        </p>
+
+    </section>
+
+
+    <!-- ==================================
+         FILM COLLECTION
+    =================================== -->
+
+    <section id="film-collection" class="showreel-collection">
+
+        <div class="showreel-collection-heading">
+
+            <div>
+                <p class="showreel-eyebrow">THE MOVING PICTURE</p>
+                <h2>Selected films</h2>
+            </div>
+
+            <p id="showreel-collection-count">
+                Loading films...
+            </p>
+
+        </div>
+
+        <div id="showreel-video-grid"
+             class="showreel-video-grid">
+
+            <div class="showreel-loading">
+                <span class="showreel-spinner"></span>
+                <p>Loading cinematic stories...</p>
+            </div>
+
+        </div>
+
+        <p id="showreel-error"
+           class="showreel-error"
+           role="status"
+           aria-live="polite">
+        </p>
+
+    </section>
+
+
+    <!-- ==================================
+         CONTACT CTA
+    =================================== -->
+
+    <section class="showreel-contact">
+
+        <p class="showreel-eyebrow">YOUR MOMENTS, OUR LENS</p>
+
+        <h2>
+            Have a story<br>
+            <em>waiting to be told?</em>
+        </h2>
+
+        <p>
+            Let's turn your moments into something you can
+            experience again and again.
+        </p>
+
+        <a href="contact.html" class="showreel-contact-button">
+            Create something meaningful <span aria-hidden="true">↗</span>
+        </a>
+
+    </section>
+
+</main>
+
+
+<!-- ======================================
+     CINEMATIC VIDEO PLAYER
+======================================= -->
+
+<dialog id="showreel-player-dialog"
+        class="showreel-player-dialog"
+        aria-label="Film player">
+
+    <div class="showreel-player-toolbar">
+
+        <div class="showreel-player-title-area">
+            <p id="showreel-player-title">Now playing</p>
+            <span id="showreel-player-description"></span>
+        </div>
+
+        <div class="showreel-player-actions">
+
+            <button type="button"
+                    id="showreel-fullscreen-button"
+                    class="showreel-fullscreen-button">
+                Fullscreen ⛶
+            </button>
+
+            <button type="button"
+                    id="showreel-player-close"
+                    class="showreel-player-close"
+                    aria-label="Close video player">
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="showreel-player-body">
+
+        <video
+                id="showreel-player-video"
+                class="showreel-player-video"
+                controls
+                playsinline
+                preload="metadata">
+        </video>
+
+        <p id="showreel-player-status"
+           class="showreel-player-status"
+           role="status"
+           aria-live="polite">
+        </p>
+
+    </div>
+
+</dialog>
+
+
+<footer class="showreel-footer">
+
+    <a href="../index.html" class="showreel-footer-brand">
+        STUDIO.
+    </a>
+
+    <p>Photography · Films · Stories</p>
+
+    <a href="contact.html">Get in touch ↗</a>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+
+<script src="../js/public/experience.js"></script>
+<script src="../js/public/showreel.js"></script>
+
+</body>
+</html>

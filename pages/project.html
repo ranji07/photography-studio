@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Story | Photography Studio</title>
+    <meta name="description"
+          content="Explore a photography project story from our studio.">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="stylesheet" href="../css/experience.css">
+</head>
+
+<body class="project-page">
+
+<header class="project-header">
+    <a class="project-logo" href="../index.html">
+        <span class="project-logo-main">STUDIO</span>
+        <span class="project-logo-sub">PHOTOGRAPHY & FILMS</span>
+    </a>
+
+    <nav class="project-navigation" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="films.html">Films</a>
+        <a href="stories.html">Stories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <a class="project-header-cta" href="contact.html">
+        Start a project ↗
+    </a>
+</header>
+
+<main id="project-main" hidden>
+
+    <section class="project-intro">
+        <a href="stories.html" class="project-back-link">
+            ← Back to all stories
+        </a>
+
+        <p id="project-type" class="project-eyebrow">PROJECT STORY</p>
+
+        <h1 id="project-title">Project title</h1>
+
+        <p id="project-excerpt" class="project-excerpt"></p>
+
+        <div class="project-details">
+            <div>
+                <span>CLIENT</span>
+                <p id="project-client">—</p>
+            </div>
+
+            <div>
+                <span>LOCATION</span>
+                <p id="project-location">—</p>
+            </div>
+
+            <div>
+                <span>DATE</span>
+                <p id="project-date">—</p>
+            </div>
+
+            <div>
+                <span>PROJECT</span>
+                <p id="project-category">—</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-cover">
+        <img id="project-cover-image"
+             src="../assets/images/studio-about.jpg"
+             alt="Project cover photograph">
+    </section>
+
+    <section class="project-story-section">
+        <div>
+            <p class="project-eyebrow">THE STORY</p>
+            <h2>Moments that<br><em>stay with us.</em></h2>
+        </div>
+
+        <div id="project-story" class="project-story-text"></div>
+    </section>
+
+    <section class="project-gallery-section">
+        <div class="project-gallery-heading">
+            <div>
+                <p class="project-eyebrow">THE VISUAL JOURNAL</p>
+                <h2>Through our lens</h2>
+            </div>
+
+            <p id="project-gallery-count"></p>
+        </div>
+
+        <div id="project-gallery" class="project-gallery"></div>
+    </section>
+
+    <section class="project-bottom-cta">
+        <p class="project-eyebrow">LET'S CREATE YOUR STORY</p>
+        <h2>Something beautiful<br><em>starts with a conversation.</em></h2>
+        <a href="contact.html" class="project-cta-button">
+            Enquire about your project ↗
+        </a>
+        <a href="stories.html" class="project-all-stories-link">
+            Explore more stories
+        </a>
+    </section>
+
+</main>
+
+<section id="project-loading" class="project-status">
+    <span class="project-loader"></span>
+    <p>Loading project story...</p>
+</section>
+
+<section id="project-error" class="project-status" hidden>
+    <p class="project-eyebrow">STORY UNAVAILABLE</p>
+    <h1>This story could not be found.</h1>
+    <p id="project-error-message">
+        The project may have been unpublished or the link may be incorrect.
+    </p>
+    <a href="stories.html" class="project-cta-button">
+        Return to stories
+    </a>
+</section>
+
+<footer class="project-footer">
+    <a href="../index.html" class="project-footer-logo">STUDIO.</a>
+    <p>Photography · Films · Stories</p>
+    <a href="contact.html">Get in touch ↗</a>
+</footer>
+
+<!-- Accessible gallery lightbox -->
+<dialog id="project-lightbox" class="project-lightbox"
+        aria-label="Project image viewer">
+
+    <button type="button"
+            id="project-lightbox-close"
+            class="project-lightbox-close"
+            aria-label="Close image viewer">
+        ×
+    </button>
+
+    <button type="button"
+            id="project-lightbox-prev"
+            class="project-lightbox-arrow project-lightbox-prev"
+            aria-label="Previous image">
+        ‹
+    </button>
+
+    <div class="project-lightbox-content">
+        <img id="project-lightbox-image" src="" alt="">
+        <div class="project-lightbox-caption">
+            <span id="project-lightbox-title"></span>
+            <span id="project-lightbox-counter"></span>
+        </div>
+    </div>
+
+    <button type="button"
+            id="project-lightbox-next"
+            class="project-lightbox-arrow project-lightbox-next"
+            aria-label="Next image">
+        ›
+    </button>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/public/experience.js"></script>
+<script src="../js/public/project.js"></script>
+
+</body>
+</html>

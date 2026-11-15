@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects Manager | Admin</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-projects.css">
+</head>
+
+<body class="admin-projects-page">
+
+<div class="admin-projects-layout">
+
+    <aside class="projects-sidebar">
+        <a href="dashboard.html" class="projects-admin-brand">
+            STUDIO<span>ADMIN</span>
+        </a>
+
+        <nav aria-label="Admin navigation">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="media.html">Media Library</a>
+            <a href="categories.html">Categories</a>
+            <a href="enquiries.html">Enquiries</a>
+            <a href="projects.html" class="active" aria-current="page">
+                Projects & Stories
+            </a>
+        </nav>
+
+        <button type="button" id="projects-logout"
+                class="projects-logout">
+            Log out
+        </button>
+    </aside>
+
+    <main class="projects-admin-main">
+
+        <header class="projects-admin-header">
+            <div>
+                <p class="projects-admin-eyebrow">CONTENT MANAGEMENT</p>
+                <h1>Projects & Stories</h1>
+                <p>Create and publish individual client project stories.</p>
+            </div>
+        </header>
+
+        <section class="project-admin-panel">
+
+            <div class="project-panel-heading">
+                <div>
+                    <p class="projects-admin-eyebrow">PROJECT EDITOR</p>
+                    <h2 id="project-form-heading">Create a new project</h2>
+                </div>
+
+                <span id="project-editor-status"
+                      class="project-editor-status">
+                    New project
+                </span>
+            </div>
+
+            <form id="project-form">
+
+                <input type="hidden" id="project-id">
+
+                <div class="project-form-grid">
+
+                    <label class="project-field project-field-full">
+                        <span>Project title *</span>
+                        <input
+                                type="text"
+                                id="project-title-input"
+                                maxlength="150"
+                                placeholder="Example: A Bali Wedding Story"
+                                required>
+                    </label>
+
+                    <label class="project-field project-field-full">
+                        <span>Page URL slug *</span>
+                        <input
+                                type="text"
+                                id="project-slug-input"
+                                maxlength="160"
+                                placeholder="bali-wedding-story"
+                                pattern="[a-z0-9]+(-[a-z0-9]+)*"
+                                required>
+                        <small>Lowercase letters, numbers and hyphens only.</small>
+                    </label>
+
+                    <label class="project-field">
+                        <span>Client name</span>
+                        <input
+                                type="text"
+                                id="project-client-input"
+                                maxlength="120"
+                                placeholder="Example: Alex & Maya">
+                    </label>
+
+                    <label class="project-field">
+                        <span>Project type</span>
+                        <input
+                                type="text"
+                                id="project-type-input"
+                                maxlength="80"
+                                placeholder="Wedding, Pre-wedding, Portrait...">
+                    </label>
+
+                    <label class="project-field">
+                        <span>Location</span>
+                        <input
+                                type="text"
+                                id="project-location-input"
+                                maxlength="150"
+                                placeholder="Example: Ubud, Bali">
+                    </label>
+
+                    <label class="project-field">
+                        <span>Event date</span>
+                        <input type="date" id="project-date-input">
+                    </label>
+
+                    <label class="project-field">
+                        <span>Display order</span>
+                        <input
+                                type="number"
+                                id="project-order-input"
+                                value="0"
+                                min="0"
+                                step="1">
+                        <small>Lower numbers appear first.</small>
+                    </label>
+
+                    <label class="project-field project-field-full">
+                        <span>Short introduction</span>
+                        <textarea
+                                id="project-excerpt-input"
+                                rows="3"
+                                maxlength="280"
+                                placeholder="Write a short description for the Stories page."></textarea>
+                        <small>Maximum 280 characters.</small>
+                    </label>
+
+                    <label class="project-field project-field-full">
+                        <span>Full project story</span>
+                        <textarea
+                                id="project-story-input"
+                                rows="8"
+                                maxlength="10000"
+                                placeholder="Tell the story behind this project..."></textarea>
+                    </label>
+
+                </div>
+
+                <section class="project-media-selection">
+                    <div class="project-media-heading">
+                        <div>
+                            <h3>Choose project photographs *</h3>
+                            <p>
+                                Select published photographs from your Media Library.
+                                Choose one selected photo as the cover.
+                            </p>
+                        </div>
+
+                        <span id="selected-photo-count">0 selected</span>
+                    </div>
+
+                    <div id="project-media-picker"
+                         class="project-media-picker">
+                        <p class="project-picker-message">
+                            Loading published photographs...
+                        </p>
+                    </div>
+
+                    <p id="project-media-error"
+                       class="project-form-error"
+                       role="status"></p>
+                </section>
+
+                <div class="project-publishing-options">
+
+                    <label class="project-check-option">
+                        <input type="checkbox" id="project-featured-input">
+                        <span>
+                            <strong>Featured project</strong>
+                            <small>Display this project as a featured story.</small>
+                        </span>
+                    </label>
+
+                    <label class="project-check-option">
+                        <input type="checkbox" id="project-published-input">
+                        <span>
+                            <strong>Published</strong>
+                            <small>Make this project visible to website visitors.</small>
+                        </span>
+                    </label>
+
+                </div>
+
+                <div class="project-form-actions">
+                    <button type="submit"
+                            id="project-save-button"
+                            class="project-save-button">
+                        Save project
+                    </button>
+
+                    <button type="button"
+                            id="project-reset-button"
+                            class="project-reset-button">
+                        Clear form
+                    </button>
+                </div>
+
+                <p id="project-form-message"
+                   class="project-form-message"
+                   role="status"
+                   aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <section class="project-admin-panel project-existing-panel">
+
+            <div class="project-panel-heading">
+                <div>
+                    <p class="projects-admin-eyebrow">YOUR CONTENT</p>
+                    <h2>Existing projects</h2>
+                </div>
+
+                <button type="button"
+                        id="project-refresh-button"
+                        class="project-refresh-button">
+                    ↻ Refresh
+                </button>
+            </div>
+
+            <div id="existing-projects-list"
+                 class="existing-projects-list">
+                <p class="project-picker-message">Loading projects...</p>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/admin/projects.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+/* ============================================
+   STUDIO EXPERIENCE DESIGN SYSTEM
+   Shared across all public pages
+============================================ */
+
+:root {
+    --studio-ink: #171715;
+    --studio-ivory: #F3F0E9;
+    --studio-gold: #A48B69;
+    --studio-stone: #77736C;
+    --studio-border: rgba(164, 139, 105, 0.28);
+
+    --studio-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --studio-transition: 350ms var(--studio-ease);
+}
+
+
+/* ============================================
+   GLOBAL SCROLL BEHAVIOUR
+============================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* ============================================
+   VIEW TRANSITIONS
+   Progressive enhancement
+============================================ */
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: studio-page-out 180ms ease both;
+}
+
+::view-transition-new(root) {
+    animation: studio-page-in 380ms var(--studio-ease) both;
+}
+
+@keyframes studio-page-out {
+    to {
+        opacity: 0.65;
+    }
+}
+
+@keyframes studio-page-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ============================================
+   READING PROGRESS BAR
+============================================ */
+
+.site-scroll-progress {
+    position: fixed;
+    z-index: 99999;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    pointer-events: none;
+
+    background: transparent;
+}
+
+.site-scroll-progress span {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    background: var(--studio-gold);
+
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+
+/* Native CSS scroll timeline where supported */
+
+@keyframes studio-scroll-progress {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@supports (animation-timeline: scroll()) {
+
+    .site-scroll-progress span {
+        animation: studio-scroll-progress linear both;
+        animation-timeline: scroll(root block);
+    }
+
+}
+
+
+/* ============================================
+   STICKY GLASS NAVIGATION
+============================================ */
+
+.home-header,
+.portfolio-header,
+.about-header,
+.contact-header,
+.films-header {
+
+    position: sticky;
+    top: 0;
+
+    z-index: 500;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    transition:
+        background var(--studio-transition),
+        border-color var(--studio-transition);
+}
+
+
+/* ============================================
+   NAVIGATION MICRO INTERACTIONS
+============================================ */
+
+.home-navigation a,
+.portfolio-nav a,
+.about-header nav a,
+.contact-header nav a {
+
+    position: relative;
+    transition: color 250ms ease;
+
+}
+
+.home-navigation a::after,
+.portfolio-nav a::after,
+.about-header nav a::after,
+.contact-header nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 100%;
+    height: 1px;
+
+    background: var(--studio-gold);
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform 300ms ease;
+
+}
+
+.home-navigation a:hover::after,
+.home-navigation a.active::after,
+.portfolio-nav a:hover::after,
+.portfolio-nav a.active::after,
+.about-header nav a:hover::after,
+.about-header nav a.active::after,
+.contact-header nav a:hover::after,
+.contact-header nav a.active::after {
+
+    transform: scaleX(1);
+    transform-origin: left;
+
+}
+
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+============================================ */
+
+.has-experience-motion [data-reveal] {
+
+    opacity: 0;
+
+    transform: translateY(28px);
+
+    transition:
+        opacity 700ms var(--studio-ease),
+        transform 700ms var(--studio-ease);
+
+}
+
+.has-experience-motion [data-reveal].is-revealed {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* ============================================
+   EDITORIAL PORTFOLIO GRID
+============================================ */
+
+.portfolio-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    align-items: start;
+
+    gap: 32px 22px;
+
+}
+
+
+.portfolio-card {
+
+    grid-column: span 4;
+
+    min-width: 0;
+
+}
+
+
+.portfolio-card:nth-child(6n + 1) {
+    grid-column: span 7;
+}
+
+.portfolio-card:nth-child(6n + 2) {
+    grid-column: span 5;
+}
+
+.portfolio-card:nth-child(6n + 3) {
+    grid-column: span 5;
+}
+
+.portfolio-card:nth-child(6n + 4) {
+    grid-column: span 7;
+}
+
+
+.portfolio-image-button {
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: #dedbd3;
+
+}
+
+
+.portfolio-card:nth-child(6n + 1)
+.portfolio-image-button {
+
+    aspect-ratio: 5 / 4;
+
+}
+
+
+.portfolio-card:nth-child(6n + 4)
+.portfolio-image-button {
+
+    aspect-ratio: 5 / 4;
+
+}
+
+
+.portfolio-image-button img {
+
+    transition:
+        transform 900ms var(--studio-ease),
+        filter 500ms ease;
+
+}
+
+.portfolio-image-button:hover img {
+
+    transform: scale(1.055);
+
+    filter: saturate(1.08);
+
+}
+
+
+/* ============================================
+   HOMEPAGE IMAGE INTERACTIONS
+============================================ */
+
+.home-featured-image-wrap {
+
+    overflow: hidden;
+
+}
+
+
+.home-featured-card img {
+
+    transition:
+        transform 900ms var(--studio-ease);
+
+}
+
+
+.home-featured-card:hover img {
+
+    transform: scale(1.065);
+
+}
+
+
+.home-category-card img {
+
+    transition:
+        transform 900ms var(--studio-ease),
+        filter 500ms ease;
+
+}
+
+
+.home-category-card:hover img {
+
+    transform: scale(1.07);
+
+    filter: saturate(1.1);
+
+}
+
+
+/* Gentle hero motion */
+
+@media (prefers-reduced-motion: no-preference) {
+
+    .home-hero-image {
+
+        animation: studio-hero-image 18s ease-in-out infinite alternate;
+
+    }
+
+}
+
+
+@keyframes studio-hero-image {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.06);
+    }
+
+}
+
+
+/* ============================================
+   INTERACTIVE BUTTONS
+============================================ */
+
+.home-primary-button,
+.home-secondary-button,
+.portfolio-cta-button,
+.about-cta > a,
+.contact-whatsapp-button,
+.header-booking-link {
+
+    transition:
+        transform 250ms ease,
+        background 250ms ease,
+        color 250ms ease;
+
+}
+
+
+.home-primary-button:hover,
+.portfolio-cta-button:hover,
+.contact-whatsapp-button:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+/* ============================================
+   BOOKING PILL
+============================================ */
+
+.experience-booking-pill {
+
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    z-index: 900;
+
+    padding: 15px 22px;
+
+    border-radius: 40px;
+
+    background: var(--studio-gold);
+
+    color: var(--studio-ink);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 1.3px;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 250ms ease,
+        box-shadow 250ms ease;
+
+}
+
+.experience-booking-pill:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22);
+
+}
+
+
+/* ============================================
+   SUBPAGE MOBILE NAVIGATION
+============================================ */
+
+.experience-menu-toggle {
+
+    display: none;
+
+    padding: 10px 15px;
+
+    background: transparent;
+
+    color: var(--studio-ink);
+
+    border: 1px solid var(--studio-gold);
+
+    cursor: pointer;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+
+}
+
+
+@media (max-width: 760px) {
+
+    .experience-site-header {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+    }
+
+
+    .experience-menu-toggle {
+
+        display: inline-flex;
+
+        order: 2;
+
+    }
+
+
+    .experience-mobile-navigation {
+
+        display: none !important;
+
+        order: 3;
+
+        width: 100%;
+
+        flex-direction: column !important;
+
+        align-items: flex-start !important;
+
+        gap: 18px !important;
+
+        padding: 22px 0;
+
+    }
+
+
+    .experience-mobile-navigation.is-open {
+
+        display: flex !important;
+
+    }
+
+
+    .experience-site-header > a:not(:first-child) {
+
+        order: 4;
+
+    }
+
+
+    .home-header {
+
+        position: sticky;
+
+    }
+
+}
+
+
+/* ============================================
+   LIGHTBOX NAVIGATION
+============================================ */
+
+.lightbox-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 5;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.5);
+
+    background: rgba(0,0,0,.35);
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+        background 250ms ease,
+        transform 250ms ease;
+
+}
+
+
+.lightbox-arrow:hover {
+
+    background: var(--studio-gold);
+
+    transform: translateY(-50%) scale(1.08);
+
+}
+
+
+#lightboxPrevious {
+    left: 15px;
+}
+
+#lightboxNext {
+    right: 15px;
+}
+
+
+.lightbox-arrow:disabled {
+
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+}
+
+
+.lightbox-counter {
+
+    color: #dedbd3;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-top: 12px;
+
+}
+
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+
+:focus-visible {
+
+    outline: 3px solid var(--studio-gold);
+
+    outline-offset: 4px;
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+    .has-experience-motion [data-reveal] {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+
+    }
+
+}
+
+
+/* ============================================
+   RESPONSIVE PORTFOLIO GRID
+============================================ */
+
+@media (max-width: 760px) {
+
+    .portfolio-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 22px 12px;
+
+    }
+
+    .portfolio-card,
+    .portfolio-card:nth-child(n) {
+
+        grid-column: span 1;
+
+    }
+
+    .portfolio-card:nth-child(4n + 1) {
+
+        grid-column: span 2;
+
+    }
+
+    .portfolio-card:nth-child(4n + 1)
+    .portfolio-image-button {
+
+        aspect-ratio: 16 / 10;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .portfolio-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .portfolio-card,
+    .portfolio-card:nth-child(n) {
+
+        grid-column: span 1;
+
+    }
+
+    .portfolio-image-button {
+
+        aspect-ratio: 4 / 5;
+
+    }
+
+    .portfolio-card:nth-child(4n + 1)
+    .portfolio-image-button {
+
+        aspect-ratio: 4 / 5;
+
+    }
+
+    .experience-booking-pill {
+
+        right: 15px;
+
+        bottom: 15px;
+
+        padding: 12px 17px;
+
+        font-size: 9px;
+
+    }
+
+    .lightbox-arrow {
+
+        width: 38px;
+
+        height: 38px;
+
+        font-size: 22px;
+
+    }
+
+}
+
+
+/* ============================================
+   VIEWPORT CONTAINMENT
+============================================ */
+
+@media (min-width: 900px) {
+
+    .home-services,
+    .home-testimonials,
+    .about-approach {
+
+        content-visibility: auto;
+
+        contain-intrinsic-size: auto 650px;
+
+    }
+
+}

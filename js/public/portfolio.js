@@ -29,7 +29,25 @@ const lightboxBackdrop =
     document.getElementById("lightboxBackdrop");
 
 let portfolioCategories = new Map();
+const lightboxPreviousButton =
+    document.getElementById("lightboxPrevious");
 
+const lightboxNextButton =
+    document.getElementById("lightboxNext");
+
+const lightboxCounter =
+    document.getElementById("lightboxCounter");
+
+
+// Gallery navigation state
+
+let currentPortfolioItems = [];
+
+let currentLightboxItems = [];
+
+let currentLightboxIndex = -1;
+
+let lastLightboxTrigger = null;
 
 // ==========================================
 // INITIALIZATION
@@ -197,6 +215,7 @@ async function loadPortfolio() {
 
 function renderPortfolio(items) {
 
+    currentPortfolioItems = items;
     portfolioGrid.replaceChildren();
 
     items.forEach(item => {
@@ -335,15 +354,41 @@ function showPortfolioMessage(message, isError = false) {
 
 function openLightbox(item) {
 
-    lightboxImage.src = item.file_url;
+    lastLightboxTrigger = document.activeElement;
 
-    lightboxImage.alt = item.title || "Portfolio photograph";
 
-    lightboxTitle.textContent =
-        item.title || "Untitled";
+    // Determine the currently selected category.
 
-    lightboxDescription.textContent =
-        item.description || "";
+    const activeFilter = document.querySelector(
+        "#portfolioCategoryFilters [data-category-filter].active"
+    );
+
+    const selectedCategory =
+        activeFilter?.dataset.categoryFilter || "all";
+
+
+    // Navigation stays within the selected category.
+
+    currentLightboxItems =
+        selectedCategory === "all"
+
+            ? [...currentPortfolioItems]
+
+            : currentPortfolioItems.filter(photo =>
+                photo.category_id === selectedCategory
+            );
+
+
+    currentLightboxIndex =
+        currentLightboxItems.findIndex(
+            photo => photo.id === item.id
+        );
+
+
+    if (currentLightboxIndex < 0) {
+        return;
+    }
+
 
     portfolioLightbox.hidden = false;
 
@@ -351,10 +396,83 @@ function openLightbox(item) {
         "portfolio-lightbox-open"
     );
 
+
+    displayCurrentLightboxImage();
+
     closeLightboxButton.focus();
 
 }
+function displayCurrentLightboxImage() {
 
+    const item =
+        currentLightboxItems[currentLightboxIndex];
+
+    if (!item) {
+        return;
+    }
+
+
+    lightboxImage.src = item.file_url;
+
+    lightboxImage.alt =
+        item.title || "Portfolio photograph";
+
+    lightboxTitle.textContent =
+        item.title || "Untitled";
+
+    lightboxDescription.textContent =
+        item.description || "";
+
+
+    // Display image position.
+
+    lightboxCounter.textContent =
+        `${currentLightboxIndex + 1} / ${currentLightboxItems.length}`;
+
+
+    const hasMultiple =
+        currentLightboxItems.length > 1;
+
+
+    lightboxPreviousButton.disabled = !hasMultiple;
+
+    lightboxNextButton.disabled = !hasMultiple;
+
+
+    // Preload next image.
+
+    if (hasMultiple) {
+
+        const nextIndex =
+            (currentLightboxIndex + 1) %
+            currentLightboxItems.length;
+
+        const preloadImage = new Image();
+
+        preloadImage.src =
+            currentLightboxItems[nextIndex].file_url;
+
+    }
+
+}
+function navigateLightbox(direction) {
+
+    if (currentLightboxItems.length <= 1) {
+        return;
+    }
+
+
+    const total =
+        currentLightboxItems.length;
+
+
+    currentLightboxIndex =
+        (currentLightboxIndex + direction + total) % total;
+
+
+    displayCurrentLightboxImage();
+
+}
 
 // ==========================================
 // CLOSE LIGHTBOX
@@ -370,6 +488,25 @@ function closePortfolioLightbox() {
         "portfolio-lightbox-open"
     );
 
+
+    // Restore keyboard focus to the selected photograph.
+
+    if (
+        lastLightboxTrigger &&
+        lastLightboxTrigger.isConnected
+    ) {
+
+        lastLightboxTrigger.focus();
+
+    }
+
+
+    lastLightboxTrigger = null;
+
+    currentLightboxIndex = -1;
+
+    currentLightboxItems = [];
+
 }
 
 
@@ -379,35 +516,89 @@ function closePortfolioLightbox() {
 
 function registerLightboxEvents() {
 
-    if (
-        !portfolioLightbox ||
-        !lightboxImage ||
-        !lightboxTitle ||
-        !lightboxDescription ||
-        !closeLightboxButton ||
-        !lightboxBackdrop
-    ) {
-        console.error("Lightbox HTML elements are missing.");
+    const requiredElements = [
+        portfolioLightbox,
+        lightboxImage,
+        lightboxTitle,
+        lightboxDescription,
+        closeLightboxButton,
+        lightboxBackdrop,
+        lightboxPreviousButton,
+        lightboxNextButton,
+        lightboxCounter
+    ];
+
+
+    if (requiredElements.some(element => !element)) {
+
+        console.error(
+            "One or more lightbox HTML elements are missing."
+        );
+
         return;
+
     }
+
 
     closeLightboxButton.addEventListener(
         "click",
         closePortfolioLightbox
     );
 
+
     lightboxBackdrop.addEventListener(
         "click",
         closePortfolioLightbox
     );
 
+
+    lightboxPreviousButton.addEventListener(
+        "click",
+        () => navigateLightbox(-1)
+    );
+
+
+    lightboxNextButton.addEventListener(
+        "click",
+        () => navigateLightbox(1)
+    );
+
+
     document.addEventListener("keydown", function(event) {
 
-        if (
-            event.key === "Escape" &&
-            !portfolioLightbox.hidden
-        ) {
+        if (portfolioLightbox.hidden) {
+            return;
+        }
+
+
+        if (event.key === "Escape") {
+
+            event.preventDefault();
+
             closePortfolioLightbox();
+
+            return;
+
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+            event.preventDefault();
+
+            navigateLightbox(-1);
+
+            return;
+
+        }
+
+
+        if (event.key === "ArrowRight") {
+
+            event.preventDefault();
+
+            navigateLightbox(1);
+
         }
 
     });

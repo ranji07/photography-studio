@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Client Stories | Photography Studio</title>
+    <meta name="description"
+          content="Explore wedding, portrait and destination photography stories from our studio.">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/stories.css">
+    <link rel="stylesheet" href="../css/experience.css">
+</head>
+
+<body class="stories-page">
+
+<header class="stories-header">
+    <a class="stories-logo" href="../index.html">
+        <span class="stories-logo-main">STUDIO</span>
+        <span class="stories-logo-sub">PHOTOGRAPHY & FILMS</span>
+    </a>
+
+    <nav class="stories-navigation" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="films.html">Films</a>
+        <a href="stories.html" aria-current="page">Stories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="showreel.html">Showreel</a>
+    </nav>
+
+    <a class="stories-header-cta" href="contact.html">
+        Start a project <span aria-hidden="true">↗</span>
+    </a>
+</header>
+
+<main>
+    <section class="stories-hero">
+        <p class="stories-eyebrow">THE JOURNAL · OUR WORK</p>
+
+        <h1>Every story deserves<br>
+            <em>to be remembered.</em>
+        </h1>
+
+        <p class="stories-hero-description">
+            A collection of people, places and moments —
+            captured with intention and told through photographs.
+        </p>
+    </section>
+
+    <section class="stories-library" aria-labelledby="stories-heading">
+        <div class="stories-library-heading">
+            <div>
+                <p class="stories-eyebrow">SELECTED PROJECTS</p>
+                <h2 id="stories-heading">The stories</h2>
+            </div>
+
+            <p id="stories-count" class="stories-count">Loading projects...</p>
+        </div>
+
+        <div class="stories-toolbar">
+            <div id="stories-filters"
+                 class="stories-filters"
+                 aria-label="Filter projects">
+                <button class="story-filter active"
+                        type="button"
+                        data-filter="all">
+                    All stories
+                </button>
+            </div>
+
+            <label class="stories-search">
+                <span class="visually-hidden">Search projects</span>
+                <input
+                        type="search"
+                        id="stories-search"
+                        placeholder="Search stories..."
+                        autocomplete="off">
+                <span aria-hidden="true">⌕</span>
+            </label>
+        </div>
+
+        <div id="stories-grid" class="stories-grid">
+            <div class="stories-loading">
+                <span class="stories-loader"></span>
+                <p>Discovering stories...</p>
+            </div>
+        </div>
+
+        <p id="stories-message"
+           class="stories-message"
+           role="status"
+           aria-live="polite"></p>
+    </section>
+
+    <section class="stories-bottom-cta">
+        <p class="stories-eyebrow">YOUR STORY, NEXT</p>
+        <h2>Let's create something<br><em>worth remembering.</em></h2>
+        <a class="stories-button" href="contact.html">
+            Tell us about your plans <span aria-hidden="true">↗</span>
+        </a>
+    </section>
+</main>
+
+<footer class="stories-footer">
+    <a href="../index.html" class="stories-footer-logo">STUDIO.</a>
+    <p>Photography · Films · Stories</p>
+    <a href="contact.html">Get in touch ↗</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/public/experience.js"></script>
+<script src="../js/public/stories.js"></script>
+
+</body>
+</html>
