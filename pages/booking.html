@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Start Your Project | Photography & Films</title>
+    <meta name="description"
+          content="Tell us about your celebration and photography or film requirements. Start your project enquiry with our studio.">
+    <meta name="theme-color" content="#f6f4ef">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/experience.css">
+    <link rel="stylesheet" href="../css/booking.css">
+</head>
+
+<body class="booking-page">
+
+<header class="booking-header">
+    <a href="../index.html" class="booking-brand">
+        <span class="booking-brand-main">STUDIO</span>
+        <span class="booking-brand-sub">PHOTOGRAPHY & FILMS</span>
+    </a>
+
+    <nav class="booking-navigation" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="films.html">Films</a>
+        <a href="stories.html">Stories</a>
+        <a href="showreel.html">Showreel</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <a href="../index.html" class="booking-header-link">
+        Back to studio ↗
+    </a>
+</header>
+
+<main>
+
+    <section class="booking-hero">
+        <p class="booking-eyebrow">LET'S CREATE SOMETHING MEANINGFUL</p>
+
+        <h1>
+            Your story<br>
+            <em>starts here.</em>
+        </h1>
+
+        <p>
+            Tell us a little about your plans. We'll use your details
+            to understand your vision and prepare a suitable proposal.
+        </p>
+    </section>
+
+    <section class="booking-workspace">
+
+        <aside class="booking-aside">
+            <p class="booking-eyebrow">A THOUGHTFUL PROCESS</p>
+
+            <h2>
+                Good stories<br>
+                begin with<br>
+                <em>a conversation.</em>
+            </h2>
+
+            <p class="booking-aside-copy">
+                Share what you have in mind. Whether your plans
+                are final or still taking shape, we'll help you
+                explore the possibilities.
+            </p>
+
+            <div class="booking-aside-details">
+                <div>
+                    <span>01</span>
+                    <p>Tell us about your event</p>
+                </div>
+
+                <div>
+                    <span>02</span>
+                    <p>Share your contact details</p>
+                </div>
+
+                <div>
+                    <span>03</span>
+                    <p>Review and send your enquiry</p>
+                </div>
+            </div>
+
+            <p class="booking-aside-note">
+                Submitting an enquiry does not confirm a booking
+                or reserve an event date.
+            </p>
+        </aside>
+
+        <div class="booking-form-card">
+
+            <div class="booking-progress">
+                <div class="booking-progress-top">
+                    <span id="booking-step-label">STEP 01 OF 03</span>
+                    <span id="booking-step-name">Your event</span>
+                </div>
+
+                <div class="booking-progress-track"
+                     role="group"
+                     aria-label="Enquiry progress">
+                    <span class="booking-progress-segment active"
+                          data-progress-step="1"></span>
+                    <span class="booking-progress-segment"
+                          data-progress-step="2"></span>
+                    <span class="booking-progress-segment"
+                          data-progress-step="3"></span>
+                </div>
+            </div>
+
+            <form id="booking-form" novalidate>
+
+                <!-- STEP 1: EVENT DETAILS -->
+
+                <section class="booking-step"
+                         data-step="1"
+                         aria-labelledby="booking-step-one-title">
+
+                    <p class="booking-eyebrow">FIRST, THE BIG PICTURE</p>
+
+                    <h2 id="booking-step-one-title" tabindex="-1">
+                        Tell us about<br>your event.
+                    </h2>
+
+                    <div class="booking-field">
+                        <span class="booking-field-label">
+                            What are you looking for? *
+                        </span>
+
+                        <div class="booking-choice-grid booking-service-options">
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="service_type"
+                                       value="Photography"
+                                       required>
+                                <span class="booking-choice-content">
+                                    <strong>Photography</strong>
+                                    <small>Moments in still frames</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="service_type"
+                                       value="Films"
+                                       required>
+                                <span class="booking-choice-content">
+                                    <strong>Films</strong>
+                                    <small>Your story in motion</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="service_type"
+                                       value="Photography + Films"
+                                       required>
+                                <span class="booking-choice-content">
+                                    <strong>Photo + Film</strong>
+                                    <small>A complete visual story</small>
+                                </span>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="booking-fields-two">
+
+                        <label class="booking-field">
+                            <span class="booking-field-label">Event type *</span>
+
+                            <select id="booking-event-type" required>
+                                <option value="">Select event type</option>
+                                <option>Wedding</option>
+                                <option>Destination Wedding</option>
+                                <option>Pre-wedding</option>
+                                <option>Engagement</option>
+                                <option>Portrait</option>
+                                <option>Family Celebration</option>
+                                <option>Commercial</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+
+                        <label class="booking-field">
+                            <span class="booking-field-label">Event date</span>
+
+                            <input type="date"
+                                   id="booking-event-date">
+                            <small>Not decided yet? You can leave this blank.</small>
+                        </label>
+
+                    </div>
+
+                    <label class="booking-field">
+                        <span class="booking-field-label">Event location</span>
+
+                        <input type="text"
+                               id="booking-location"
+                               maxlength="150"
+                               placeholder="City, venue or destination">
+                    </label>
+
+                    <div class="booking-field">
+                        <span class="booking-field-label">
+                            Which collection interests you?
+                        </span>
+
+                        <div class="booking-choice-grid booking-package-options">
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="package"
+                                       value="Essential">
+                                <span class="booking-choice-content">
+                                    <strong>Essential</strong>
+                                    <small>Thoughtfully curated</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="package"
+                                       value="Signature">
+                                <span class="booking-choice-content">
+                                    <strong>Signature</strong>
+                                    <small>A fuller experience</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="package"
+                                       value="Luxury">
+                                <span class="booking-choice-content">
+                                    <strong>Luxury</strong>
+                                    <small>A complete experience</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="package"
+                                       value="Not sure">
+                                <span class="booking-choice-content">
+                                    <strong>Not sure</strong>
+                                    <small>Help me decide</small>
+                                </span>
+                            </label>
+
+                        </div>
+
+                        <small class="booking-field-hint">
+                            These are enquiry preferences, not fixed or advertised prices.
+                        </small>
+                    </div>
+
+                    <div class="booking-form-navigation">
+                        <span class="booking-navigation-hint">
+                            Your date can be confirmed later.
+                        </span>
+
+                        <button type="button"
+                                class="booking-next-button"
+                                data-next="2">
+                            Continue <span aria-hidden="true">→</span>
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <!-- STEP 2: CONTACT AND CREATIVE PREFERENCES -->
+
+                <section class="booking-step"
+                         data-step="2"
+                         aria-labelledby="booking-step-two-title"
+                         hidden>
+
+                    <p class="booking-eyebrow">LET'S GET TO KNOW YOU</p>
+
+                    <h2 id="booking-step-two-title" tabindex="-1">
+                        A few details<br>about you.
+                    </h2>
+
+                    <div class="booking-fields-two">
+
+                        <label class="booking-field">
+                            <span class="booking-field-label">Your name *</span>
+
+                            <input type="text"
+                                   id="booking-name"
+                                   minlength="2"
+                                   maxlength="100"
+                                   autocomplete="name"
+                                   placeholder="Your full name"
+                                   required>
+                        </label>
+
+                        <label class="booking-field">
+                            <span class="booking-field-label">Email address *</span>
+
+                            <input type="email"
+                                   id="booking-email"
+                                   maxlength="254"
+                                   autocomplete="email"
+                                   placeholder="you@example.com"
+                                   required>
+                        </label>
+
+                    </div>
+
+                    <label class="booking-field">
+                        <span class="booking-field-label">Phone / WhatsApp number</span>
+
+                        <input type="tel"
+                               id="booking-phone"
+                               maxlength="30"
+                               autocomplete="tel"
+                               placeholder="+91 98765 43210"
+                               pattern="[0-9+() -]{7,30}">
+                        <small>Include your country code when possible.</small>
+                    </label>
+
+                    <div class="booking-field">
+                        <span class="booking-field-label">
+                            What style speaks to you?
+                        </span>
+
+                        <div class="booking-choice-grid booking-style-options">
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="creative_style"
+                                       value="Editorial">
+                                <span class="booking-choice-content">
+                                    <strong>Editorial</strong>
+                                    <small>Elegant and composed</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="creative_style"
+                                       value="Documentary">
+                                <span class="booking-choice-content">
+                                    <strong>Documentary</strong>
+                                    <small>Honest and candid</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="creative_style"
+                                       value="Cinematic">
+                                <span class="booking-choice-content">
+                                    <strong>Cinematic</strong>
+                                    <small>Atmospheric and expressive</small>
+                                </span>
+                            </label>
+
+                            <label class="booking-choice-card">
+                                <input type="radio"
+                                       name="creative_style"
+                                       value="A mix of styles">
+                                <span class="booking-choice-content">
+                                    <strong>A little of everything</strong>
+                                    <small>A balanced visual story</small>
+                                </span>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <label class="booking-field">
+                        <span class="booking-field-label">
+                            Anything else we should know?
+                        </span>
+
+                        <textarea id="booking-notes"
+                                  maxlength="2000"
+                                  rows="4"
+                                  placeholder="Share your plans, ideas or questions..."></textarea>
+                    </label>
+
+                    <div class="booking-form-navigation">
+                        <button type="button"
+                                class="booking-back-button"
+                                data-back="1">
+                            ← Back
+                        </button>
+
+                        <button type="button"
+                                class="booking-next-button"
+                                data-next="3">
+                            Review enquiry <span aria-hidden="true">→</span>
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <!-- STEP 3: REVIEW AND SUBMIT -->
+
+                <section class="booking-step"
+                         data-step="3"
+                         aria-labelledby="booking-step-three-title"
+                         hidden>
+
+                    <p class="booking-eyebrow">ALMOST THERE</p>
+
+                    <h2 id="booking-step-three-title" tabindex="-1">
+                        Review your<br>enquiry.
+                    </h2>
+
+                    <p class="booking-review-intro">
+                        Check your details before sending them to our studio.
+                    </p>
+
+                    <div id="booking-review"
+                         class="booking-review"
+                         aria-live="polite">
+                    </div>
+
+                    <label class="booking-consent">
+                        <input type="checkbox"
+                               id="booking-consent"
+                               required>
+
+                        <span>
+                            I agree that the studio may contact me about
+                            this enquiry using the details I have provided.
+                        </span>
+                    </label>
+
+                    <p id="booking-form-status"
+                       class="booking-form-status"
+                       role="status"
+                       aria-live="polite"></p>
+
+                    <div class="booking-form-navigation">
+                        <button type="button"
+                                class="booking-back-button"
+                                data-back="2">
+                            ← Edit details
+                        </button>
+
+                        <button type="submit"
+                                id="booking-submit-button"
+                                class="booking-submit-button">
+                            Send enquiry <span aria-hidden="true">↗</span>
+                        </button>
+                    </div>
+
+                </section>
+
+            </form>
+
+
+            <!-- SUCCESS STATE -->
+
+            <section id="booking-success"
+                     class="booking-success"
+                     aria-labelledby="booking-success-title"
+                     hidden>
+
+                <div class="booking-success-mark" aria-hidden="true">✓</div>
+
+                <p class="booking-eyebrow">THANK YOU FOR REACHING OUT</p>
+
+                <h2 id="booking-success-title" tabindex="-1">
+                    Your story<br><em>starts here.</em>
+                </h2>
+
+                <p>
+                    Your enquiry has been received. Our studio can now
+                    review your requirements and get in touch.
+                </p>
+
+                <p class="booking-success-note">
+                    This is an enquiry acknowledgement, not a confirmed
+                    booking or event-date reservation.
+                </p>
+
+                <a id="booking-whatsapp-link"
+                   class="booking-whatsapp-button"
+                   href="#"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   hidden>
+                    Continue on WhatsApp ↗
+                </a>
+
+                <a href="../index.html" class="booking-home-link">
+                    Return to the studio
+                </a>
+
+            </section>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="booking-footer">
+    <a href="../index.html" class="booking-footer-brand">STUDIO.</a>
+    <p>Photography · Films · Stories</p>
+    <a href="contact.html">Contact the studio ↗</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/public/experience.js"></script>
+<script src="../js/public/booking.js"></script>
+
+</body>
+</html>
