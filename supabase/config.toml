@@ -1,0 +1,4 @@
+project_id = "umefzuukcbbjvxpqidjc"
+
+[functions.client-gallery]
+verify_jwt = false

@@ -1,0 +1,1118 @@
+
+/* =========================================================
+   ZIRIA — LUXURY PORTFOLIO THEME
+   Page-specific visual layer.
+   Existing HTML and JavaScript functionality is preserved.
+   ========================================================= */
+
+:root {
+    --portfolio-black: #090908;
+    --portfolio-dark: #10100e;
+    --portfolio-panel: #171612;
+    --portfolio-panel-hover: #201e18;
+
+    --portfolio-gold: #c6a568;
+    --portfolio-gold-light: #e0c58f;
+    --portfolio-gold-dark: #927548;
+
+    --portfolio-ivory: #f2ede3;
+    --portfolio-text: #c8c0b2;
+    --portfolio-muted: #898174;
+
+    --portfolio-border: rgba(198, 165, 104, 0.22);
+    --portfolio-soft-border: rgba(255, 255, 255, 0.09);
+
+    --portfolio-display-font: "Cormorant Garamond", Georgia, serif;
+    --portfolio-body-font: "DM Sans", Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------
+   1. PAGE FOUNDATION
+   --------------------------------------------------------- */
+
+body.portfolio-page {
+    margin: 0;
+    color: var(--portfolio-text);
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(198, 165, 104, 0.075),
+            transparent 42%
+        ),
+        var(--portfolio-black);
+    font-family: var(--portfolio-body-font);
+    font-size: 14px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+
+.portfolio-page *,
+.portfolio-page *::before,
+.portfolio-page *::after {
+    box-sizing: border-box;
+}
+
+.portfolio-page a {
+    color: var(--portfolio-gold-light);
+    text-decoration: none;
+    transition: color 220ms ease, opacity 220ms ease;
+}
+
+.portfolio-page a:hover {
+    color: var(--portfolio-ivory);
+}
+
+.portfolio-page button {
+    font-family: var(--portfolio-body-font);
+}
+
+.portfolio-page img {
+    display: block;
+    max-width: 100%;
+}
+
+.portfolio-page [hidden] {
+    display: none !important;
+}
+
+.portfolio-page :focus-visible {
+    outline: 2px solid var(--portfolio-gold-light);
+    outline-offset: 4px;
+}
+
+/* ---------------------------------------------------------
+   2. ACCESSIBILITY
+   --------------------------------------------------------- */
+
+.portfolio-page .skip-link {
+    position: absolute;
+    top: -60px;
+    left: 16px;
+    z-index: 10000;
+    padding: 10px 18px;
+    border-radius: 4px;
+    color: var(--portfolio-black);
+    background: var(--portfolio-gold);
+}
+
+.portfolio-page .skip-link:focus {
+    top: 16px;
+}
+
+/* ---------------------------------------------------------
+   3. HEADER AND NAVIGATION
+   --------------------------------------------------------- */
+
+.portfolio-page .portfolio-header {
+    position: relative;
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    width: 100%;
+    min-height: 88px;
+    padding: 18px clamp(24px, 6vw, 100px);
+
+    border-bottom: 1px solid var(--portfolio-soft-border);
+
+    background: rgba(9, 9, 8, 0.92);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+/* Studio wordmark */
+
+.portfolio-page .portfolio-logo {
+    flex-shrink: 0;
+
+    color: var(--portfolio-ivory);
+
+    font-family: var(--portfolio-display-font);
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 0.23em;
+    line-height: 1;
+
+    transition: color 220ms ease;
+}
+
+.portfolio-page .portfolio-logo:hover {
+    color: var(--portfolio-gold-light);
+}
+
+/* Main navigation */
+
+.portfolio-page .portfolio-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(15px, 2.1vw, 30px);
+}
+
+.portfolio-page .portfolio-nav a {
+    position: relative;
+
+    padding: 9px 0;
+
+    color: var(--portfolio-text);
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+
+    transition: color 220ms ease;
+}
+
+.portfolio-page .portfolio-nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    left: 0;
+
+    width: 0;
+    height: 1px;
+    margin: auto;
+
+    background: var(--portfolio-gold);
+
+    content: "";
+
+    transition: width 220ms ease;
+}
+
+.portfolio-page .portfolio-nav a:hover,
+.portfolio-page .portfolio-nav a.active {
+    color: var(--portfolio-gold-light);
+}
+
+.portfolio-page .portfolio-nav a:hover::after,
+.portfolio-page .portfolio-nav a.active::after {
+    width: 100%;
+}
+
+/* Header CTA */
+
+.portfolio-page .portfolio-contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    min-height: 42px;
+    padding: 0 21px;
+
+    border: 1px solid var(--portfolio-gold);
+    border-radius: 2px;
+
+    color: var(--portfolio-gold-light);
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-align: center;
+
+    transition:
+        color 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease;
+}
+
+.portfolio-page .portfolio-contact-link:hover {
+    border-color: var(--portfolio-gold);
+    color: var(--portfolio-black);
+    background: var(--portfolio-gold);
+}
+
+/* ---------------------------------------------------------
+   4. EDITORIAL PORTFOLIO HERO
+   --------------------------------------------------------- */
+
+.portfolio-page .portfolio-hero {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 490px;
+    padding: 105px 24px 110px;
+
+    border-bottom: 1px solid var(--portfolio-soft-border);
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(198, 165, 104, 0.09),
+            transparent 57%
+        );
+}
+
+.portfolio-page .portfolio-hero::before {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+
+    width: 1px;
+    height: 45px;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--portfolio-gold)
+    );
+
+    content: "";
+}
+
+.portfolio-page .eyebrow {
+    margin: 0 0 23px;
+
+    color: var(--portfolio-gold);
+
+    font-family: var(--portfolio-body-font);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    line-height: 1.7;
+    text-transform: uppercase;
+}
+
+.portfolio-page .portfolio-hero h1 {
+    max-width: 950px;
+    margin: 0;
+
+    color: var(--portfolio-ivory);
+
+    font-family: var(--portfolio-display-font);
+    font-size: clamp(55px, 7.5vw, 112px);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.94;
+}
+
+.portfolio-page .portfolio-hero h1 br {
+    display: block;
+}
+
+.portfolio-page .portfolio-hero-description {
+    max-width: 570px;
+    margin: 30px auto 0;
+
+    color: var(--portfolio-muted);
+
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.035em;
+    line-height: 2;
+}
+
+/* ---------------------------------------------------------
+   5. CATEGORY FILTER SECTION
+   --------------------------------------------------------- */
+
+.portfolio-page .portfolio-category-filter-section {
+    padding: 50px 24px 42px;
+
+    border-bottom: 1px solid var(--portfolio-soft-border);
+
+    text-align: center;
+    background: var(--portfolio-dark);
+}
+
+.portfolio-page .portfolio-filter-heading {
+    margin-bottom: 23px;
+}
+
+.portfolio-page .portfolio-filter-heading .eyebrow {
+    margin: 0;
+}
+
+/* Dynamic category buttons */
+
+.portfolio-page .portfolio-category-filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.portfolio-page .portfolio-category-filters button,
+.portfolio-page .portfolio-category-filters a,
+.portfolio-page .portfolio-category-filters [role="button"] {
+    min-height: 38px;
+    padding: 9px 19px;
+
+    border: 1px solid var(--portfolio-border);
+    border-radius: 2px;
+
+    color: var(--portfolio-text);
+    background: transparent;
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        color 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease;
+}
+
+.portfolio-page .portfolio-category-filters button:hover,
+.portfolio-page .portfolio-category-filters a:hover,
+.portfolio-page .portfolio-category-filters [role="button"]:hover {
+    border-color: var(--portfolio-gold);
+    color: var(--portfolio-gold-light);
+    background: rgba(198, 165, 104, 0.08);
+}
+
+/* Selected category */
+
+.portfolio-page .portfolio-category-filters button.active,
+.portfolio-page .portfolio-category-filters a.active,
+.portfolio-page .portfolio-category-filters button[aria-pressed="true"],
+.portfolio-page .portfolio-category-filters a[aria-pressed="true"] {
+    border-color: var(--portfolio-gold);
+    color: var(--portfolio-black);
+    background: var(--portfolio-gold);
+}
+
+/* Loading category label */
+
+.portfolio-page .portfolio-filter-loading {
+    color: var(--portfolio-muted);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------
+   6. GALLERY SECTION
+   Preserve original portfolio.css gallery dimensions/layout
+   --------------------------------------------------------- */
+
+.portfolio-page .portfolio-gallery-section {
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    padding: 95px clamp(22px, 5vw, 75px) 110px;
+}
+
+.portfolio-page .portfolio-gallery-heading {
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.portfolio-page .portfolio-gallery-heading h2 {
+    margin: 0;
+    color: var(--portfolio-ivory);
+    font-family: var(--portfolio-display-font);
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 400;
+}
+
+.portfolio-page .portfolio-gallery-heading h2::after {
+    display: block;
+    width: 48px;
+    height: 1px;
+    margin: 20px auto 17px;
+    background: var(--portfolio-gold);
+    content: "";
+}
+
+.portfolio-page .portfolio-gallery-heading p {
+    margin: 0;
+    color: var(--portfolio-muted);
+    font-size: 12px;
+    letter-spacing: 0.07em;
+}
+
+.portfolio-page .portfolio-message {
+    padding: 28px 16px;
+    color: var(--portfolio-muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* ---------------------------------------------------------
+   7. IMAGE LIGHTBOX
+   --------------------------------------------------------- */
+
+.portfolio-page .portfolio-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    background: rgba(0, 0, 0, 0.96);
+}
+
+.portfolio-page .portfolio-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(198, 165, 104, 0.06),
+            transparent 70%
+        );
+}
+
+.portfolio-page .portfolio-lightbox-content {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: min(1050px, 100%);
+    max-height: 92vh;
+    padding: 35px 55px 25px;
+
+    border: 1px solid var(--portfolio-border);
+    border-radius: 3px;
+
+    background: #10100e;
+    box-shadow: 0 25px 90px rgba(0, 0, 0, 0.65);
+}
+
+/* Preview photograph */
+
+.portfolio-page .portfolio-lightbox-content img {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+    max-height: 68vh;
+
+    object-fit: contain;
+
+    background: #080807;
+}
+
+/* Close button */
+
+.portfolio-page .lightbox-close {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    z-index: 5;
+
+    display: grid;
+    place-items: center;
+
+    width: 43px;
+    height: 43px;
+    min-height: 43px;
+    padding: 0;
+
+    border: 1px solid transparent;
+
+    color: var(--portfolio-gold-light);
+    background: transparent;
+
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.portfolio-page .lightbox-close:hover {
+    border-color: var(--portfolio-border);
+    color: var(--portfolio-ivory);
+    background: var(--portfolio-panel);
+}
+
+/* Previous and next arrows */
+
+.portfolio-page .lightbox-arrow {
+    position: absolute;
+    top: 45%;
+    z-index: 5;
+
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 54px;
+    min-height: 54px;
+    padding: 0;
+
+    border: 1px solid var(--portfolio-border);
+    border-radius: 2px;
+
+    color: var(--portfolio-gold-light);
+    background: rgba(9, 9, 8, 0.8);
+
+    font-size: 35px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease;
+}
+
+.portfolio-page .lightbox-arrow:hover {
+    border-color: var(--portfolio-gold);
+    color: var(--portfolio-black);
+    background: var(--portfolio-gold);
+}
+
+.portfolio-page #lightboxPrevious {
+    left: 8px;
+}
+
+.portfolio-page #lightboxNext {
+    right: 8px;
+}
+
+/* Lightbox description */
+
+.portfolio-page .lightbox-details {
+    width: 100%;
+    padding-top: 22px;
+    text-align: center;
+}
+
+.portfolio-page .lightbox-details h2 {
+    margin: 0 0 7px;
+
+    color: var(--portfolio-ivory);
+
+    font-family: var(--portfolio-display-font);
+    font-size: clamp(25px, 3vw, 38px);
+    font-weight: 500;
+}
+
+.portfolio-page .lightbox-details p {
+    margin: 0;
+
+    color: var(--portfolio-muted);
+
+    font-size: 12px;
+}
+
+/* Lightbox position indicator */
+
+.portfolio-page .lightbox-counter {
+    margin: 15px 0 0;
+
+    color: var(--portfolio-gold);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+/* ---------------------------------------------------------
+   8. FINAL CONTACT CTA
+   --------------------------------------------------------- */
+
+.portfolio-page .portfolio-cta {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 100px 24px 110px;
+
+    border-top: 1px solid var(--portfolio-border);
+    border-bottom: 1px solid var(--portfolio-border);
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(198, 165, 104, 0.12),
+            transparent 65%
+        ),
+        #11100d;
+}
+
+.portfolio-page .portfolio-cta .eyebrow {
+    margin-bottom: 20px;
+}
+
+.portfolio-page .portfolio-cta h2 {
+    max-width: 850px;
+    margin: 0 auto 35px;
+
+    color: var(--portfolio-ivory);
+
+    font-family: var(--portfolio-display-font);
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+}
+
+/* CTA link */
+
+.portfolio-page .portfolio-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 190px;
+    min-height: 48px;
+    padding: 12px 27px;
+
+    border: 1px solid var(--portfolio-gold);
+    border-radius: 2px;
+
+    color: var(--portfolio-black);
+    background: var(--portfolio-gold);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-align: center;
+
+    transition:
+        color 250ms ease,
+        background 250ms ease,
+        transform 250ms ease,
+        box-shadow 250ms ease;
+}
+
+.portfolio-page .portfolio-cta-button:hover {
+    color: var(--portfolio-gold-light);
+    background: transparent;
+    box-shadow: 0 8px 30px rgba(198, 165, 104, 0.12);
+    transform: translateY(-3px);
+}
+
+/* ---------------------------------------------------------
+   9. FOOTER
+   --------------------------------------------------------- */
+
+.portfolio-page .portfolio-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 55px 24px 35px;
+
+    background: #080807;
+    text-align: center;
+}
+
+.portfolio-page .portfolio-footer .portfolio-logo {
+    margin-bottom: 19px;
+
+    font-size: 30px;
+}
+
+.portfolio-page .portfolio-footer p {
+    margin: 5px 0;
+
+    color: var(--portfolio-muted);
+
+    font-size: 11px;
+    letter-spacing: 0.08em;
+}
+
+.portfolio-page .portfolio-footer .copyright {
+    margin-top: 20px;
+    padding-top: 20px;
+
+    width: min(600px, 100%);
+
+    border-top: 1px solid var(--portfolio-soft-border);
+
+    color: #6f695f;
+
+    font-size: 10px;
+    letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------
+   10. TABLET RESPONSIVENESS
+   --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .portfolio-page .portfolio-header {
+        gap: 20px;
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+
+    .portfolio-page .portfolio-nav {
+        gap: 13px;
+    }
+
+    .portfolio-page .portfolio-nav a {
+        font-size: 9px;
+    }
+
+    .portfolio-page .portfolio-contact-link {
+        padding-right: 13px;
+        padding-left: 13px;
+        font-size: 8px;
+    }
+
+
+}
+
+/* ---------------------------------------------------------
+   11. MOBILE RESPONSIVENESS
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+    .portfolio-page .portfolio-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
+
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .portfolio-page .portfolio-logo {
+        font-size: 29px;
+    }
+
+    .portfolio-page .portfolio-contact-link {
+        min-height: 38px;
+        padding: 0 12px;
+    }
+
+    .portfolio-page .portfolio-nav {
+        order: 3;
+
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 22px;
+
+        width: 100%;
+        padding: 8px 0 4px;
+
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+    }
+
+    .portfolio-page .portfolio-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .portfolio-page .portfolio-nav a {
+        flex-shrink: 0;
+        font-size: 9px;
+    }
+
+    .portfolio-page .portfolio-hero {
+        min-height: 410px;
+        padding: 105px 23px 80px;
+    }
+
+    .portfolio-page .portfolio-hero h1 {
+        font-size: clamp(51px, 13vw, 75px);
+        line-height: 0.98;
+    }
+
+    .portfolio-page .portfolio-hero-description {
+        max-width: 440px;
+        margin-top: 22px;
+
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    .portfolio-page .portfolio-category-filter-section {
+        padding: 38px 17px;
+    }
+
+    .portfolio-page .portfolio-category-filters {
+        gap: 8px;
+    }
+
+    .portfolio-page .portfolio-category-filters button,
+    .portfolio-page .portfolio-category-filters a {
+        min-height: 35px;
+        padding: 8px 13px;
+        font-size: 9px;
+    }
+
+    .portfolio-page .portfolio-gallery-section {
+        padding: 67px 17px 75px;
+    }
+
+    .portfolio-page .portfolio-gallery-heading {
+        margin-bottom: 30px;
+    }
+
+    .portfolio-page .portfolio-cta {
+        padding: 75px 22px 85px;
+    }
+
+    .portfolio-page .portfolio-lightbox {
+        padding: 12px;
+    }
+
+    .portfolio-page .portfolio-lightbox-content {
+        width: 100%;
+        padding: 45px 12px 20px;
+    }
+
+    .portfolio-page .portfolio-lightbox-content img {
+        max-height: 62vh;
+    }
+
+    .portfolio-page .lightbox-arrow {
+        top: 40%;
+        width: 35px;
+        height: 46px;
+        min-height: 46px;
+    }
+
+    .portfolio-page #lightboxPrevious {
+        left: 3px;
+    }
+
+    .portfolio-page #lightboxNext {
+        right: 3px;
+    }
+}
+
+/* ---------------------------------------------------------
+   12. SMALL MOBILE DEVICES
+   --------------------------------------------------------- */
+
+@media (max-width: 420px) {
+
+    .portfolio-page .portfolio-header {
+        padding: 17px 14px;
+    }
+
+    .portfolio-page .portfolio-logo {
+        font-size: 26px;
+    }
+
+    .portfolio-page .portfolio-contact-link {
+        padding: 0 10px;
+        font-size: 8px;
+    }
+
+    .portfolio-page .portfolio-hero {
+        min-height: 370px;
+        padding-top: 90px;
+    }
+
+    .portfolio-page .portfolio-hero h1 {
+        font-size: 49px;
+    }
+
+    .portfolio-page .portfolio-grid img {
+        aspect-ratio: 5 / 4;
+    }
+
+    .portfolio-page .portfolio-footer {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+}
+
+/* ---------------------------------------------------------
+   13. REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portfolio-page *,
+    .portfolio-page *::before,
+    .portfolio-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   PORTFOLIO HERO — LEFT TEXT + FADED RIGHT IMAGE
+   ========================================================= */
+
+.portfolio-page .portfolio-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    min-height: 570px;
+    padding: 110px clamp(25px, 9vw, 140px);
+
+    text-align: left;
+
+    background: var(--portfolio-black);
+}
+
+/* Cinematic background image on the right */
+.portfolio-page .portfolio-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 72%;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(9, 9, 8, 0.10),
+            rgba(9, 9, 8, 0.05)
+        ),
+        url("../assets/images/studio-about.jpg");
+
+    background-size: cover;
+    background-position: center 42%;
+    background-repeat: no-repeat;
+
+    opacity: 0.78;
+
+    /* Fade the image from transparent on the left
+       to fully visible on the right */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.12) 18%,
+        rgba(0, 0, 0, 0.65) 43%,
+        #000 68%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.12) 18%,
+        rgba(0, 0, 0, 0.65) 43%,
+        #000 68%
+    );
+}
+
+/* Remove the old centered decorative line */
+.portfolio-page .portfolio-hero::before {
+    display: none;
+}
+
+/* Keep text above the image */
+.portfolio-page .portfolio-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Text alignment and width */
+.portfolio-page .portfolio-hero .eyebrow {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.portfolio-page .portfolio-hero h1 {
+    max-width: 650px;
+    margin: 0;
+
+    text-align: left;
+    line-height: 0.98;
+}
+
+.portfolio-page .portfolio-hero-description {
+    max-width: 490px;
+    margin: 27px 0 0;
+
+    color: var(--portfolio-text);
+    text-align: left;
+    line-height: 2;
+}
+
+/* Tablet */
+@media (max-width: 760px) {
+    .portfolio-page .portfolio-hero {
+        min-height: 490px;
+        padding: 90px 28px;
+    }
+
+    .portfolio-page .portfolio-hero::after {
+        width: 100%;
+        opacity: 0.48;
+
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.35) 35%,
+            #000 100%
+        );
+
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.35) 35%,
+            #000 100%
+        );
+    }
+
+    .portfolio-page .portfolio-hero h1 {
+        max-width: 540px;
+    }
+
+    .portfolio-page .portfolio-hero-description {
+        max-width: 420px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 420px) {
+    .portfolio-page .portfolio-hero {
+        min-height: 430px;
+        padding: 75px 21px;
+    }
+
+    .portfolio-page .portfolio-hero::after {
+        opacity: 0.35;
+        background-position: 60% center;
+    }
+
+    .portfolio-page .portfolio-hero h1 {
+        font-size: 49px;
+    }
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Private Client Gallery | Studio</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="A private photograph gallery shared by our studio.">
+
+    <meta name="theme-color" content="#161613">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/client-gallery.css">
+    <link rel="stylesheet" href="../css/luxury-theme.css">
+</head>
+
+<body class="client-gallery-page">
+
+<header class="client-gallery-header">
+    <a href="../index.html" class="client-gallery-brand">
+        <span>STUDIO</span>
+        <small>PRIVATE CLIENT GALLERY</small>
+    </a>
+
+    <span class="client-gallery-private-label">
+        PRIVATE COLLECTION
+    </span>
+</header>
+
+
+<main>
+
+    <!-- LOCKED VIEW -->
+
+    <section id="gallery-locked" class="gallery-locked">
+
+        <p class="gallery-eyebrow">A PRIVATE COLLECTION</p>
+
+        <div class="gallery-lock-icon" aria-hidden="true">✳</div>
+
+        <h1>Your moments,<br><em>beautifully preserved.</em></h1>
+
+        <p class="gallery-locked-copy">
+            This gallery has been privately shared with you.
+            Enter the password provided by our studio to continue.
+        </p>
+
+        <form id="gallery-unlock-form" class="gallery-unlock-form">
+
+            <label for="gallery-password">
+                Gallery password
+            </label>
+
+            <input
+                    type="password"
+                    id="gallery-password"
+                    autocomplete="current-password"
+                    minlength="8"
+                    maxlength="128"
+                    placeholder="Enter your password"
+                    required>
+
+            <button type="submit" id="gallery-unlock-button">
+                Unlock gallery <span aria-hidden="true">→</span>
+            </button>
+
+            <p id="gallery-unlock-error"
+               class="gallery-error"
+               role="alert"
+               aria-live="polite"></p>
+
+        </form>
+
+        <p class="gallery-secure-note">
+            Your private photographs are accessible only
+            through this password-protected gallery.
+        </p>
+
+    </section>
+
+
+    <!-- UNLOCKED GALLERY -->
+
+    <section id="gallery-content" class="gallery-content" hidden>
+
+        <section class="gallery-hero">
+
+            <p class="gallery-eyebrow">A COLLECTION FOR YOU</p>
+
+            <h1 id="gallery-title">Your photographs</h1>
+
+            <p id="gallery-client-name" class="gallery-client-name"></p>
+
+            <p id="gallery-event-date" class="gallery-event-date"></p>
+
+            <p class="gallery-intro">
+                Take your time, revisit your moments and select
+                the photographs that mean the most to you.
+            </p>
+
+        </section>
+
+
+        <section class="gallery-toolbar">
+
+            <div>
+                <strong id="gallery-photo-count">0 photographs</strong>
+                <span id="gallery-favorite-count">0 favourites</span>
+            </div>
+
+            <button type="button" id="gallery-refresh-button">
+                ↻ Refresh gallery
+            </button>
+
+        </section>
+
+
+        <section id="gallery-photo-grid" class="gallery-photo-grid">
+
+        </section>
+
+
+        <section id="gallery-selection-panel"
+                 class="gallery-selection-panel"
+                 hidden>
+
+            <div>
+                <p class="gallery-eyebrow">YOUR FINAL SELECTION</p>
+                <h2>Choose your favourites.</h2>
+                <p>
+                    Add your preferred photographs to favourites
+                    and submit your selection when you're ready.
+                </p>
+            </div>
+
+            <label class="gallery-note-field">
+                <span>Additional note (optional)</span>
+
+                <textarea
+                        id="gallery-client-note"
+                        maxlength="1000"
+                        rows="3"
+                        placeholder="Any special instructions for the studio..."></textarea>
+            </label>
+
+            <button type="button"
+                    id="gallery-submit-selection"
+                    class="gallery-submit-button">
+                Submit my selection <span aria-hidden="true">↗</span>
+            </button>
+
+            <p id="gallery-selection-status"
+               class="gallery-selection-status"
+               role="status"
+               aria-live="polite"></p>
+
+        </section>
+
+
+        <section id="gallery-thank-you"
+                 class="gallery-thank-you"
+                 hidden>
+
+            <span class="gallery-thank-you-icon">✓</span>
+
+            <p class="gallery-eyebrow">SELECTION RECEIVED</p>
+
+            <h2>Thank you for sharing your choices.</h2>
+
+            <p>
+                Your selected photographs have been submitted
+                to the studio for review.
+            </p>
+
+        </section>
+
+    </section>
+
+
+    <!-- LOADING -->
+
+    <section id="gallery-loading" class="gallery-loading" hidden>
+        <span class="gallery-spinner"></span>
+        <p>Opening your gallery...</p>
+    </section>
+
+</main>
+
+
+<footer class="client-gallery-footer">
+    <span>STUDIO.</span>
+    <p>Created with care · Photography & Films</p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/public/client-gallery.js"></script>
+
+</body>
+</html>

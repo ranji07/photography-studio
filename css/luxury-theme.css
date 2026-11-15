@@ -1,0 +1,1065 @@
+
+/* =========================================================
+   LUXURY EDITORIAL THEME
+   Shared visual foundation for all studio pages
+   ========================================================= */
+
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    color-scheme: dark;
+
+    /* Core palette */
+    --lux-bg: #0b0b0a;
+    --lux-bg-soft: #10100e;
+    --lux-surface: #171613;
+    --lux-surface-raised: #201e19;
+
+    /* Gold palette */
+    --lux-gold: #c8a96e;
+    --lux-gold-light: #e0c58e;
+    --lux-gold-muted: #8d754d;
+
+    /* Text */
+    --lux-ivory: #f3eee4;
+    --lux-text: #d8d1c4;
+    --lux-muted: #999184;
+
+    /* Borders and shadows */
+    --lux-border: rgba(200, 169, 110, 0.22);
+    --lux-border-soft: rgba(255, 255, 255, 0.08);
+    --lux-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+
+    /* Typography */
+    --lux-font-display: "Cormorant Garamond", Georgia, serif;
+    --lux-font-body: "Manrope", Arial, sans-serif;
+
+    /* Shape and spacing */
+    --lux-radius-sm: 8px;
+    --lux-radius-md: 14px;
+    --lux-radius-lg: 22px;
+    --lux-radius-pill: 999px;
+    --lux-transition: 220ms ease;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--lux-bg);
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--lux-text);
+    background:
+        radial-gradient(
+            ellipse at 50% -20%,
+            rgba(200, 169, 110, 0.07),
+            transparent 48%
+        ),
+        var(--lux-bg);
+    font-family: var(--lux-font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+/* Selection */
+::selection {
+    color: var(--lux-bg);
+    background: var(--lux-gold);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    color: var(--lux-ivory);
+    font-family: var(--lux-font-display);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+}
+
+h1 {
+    font-size: clamp(2.7rem, 6vw, 5.8rem);
+}
+
+h2 {
+    font-size: clamp(2.1rem, 4vw, 4rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+}
+
+p {
+    color: var(--lux-text);
+}
+
+small,
+.text-muted,
+.muted {
+    color: var(--lux-muted);
+}
+
+/* Links */
+a {
+    color: var(--lux-gold-light);
+    text-decoration: none;
+    transition:
+        color var(--lux-transition),
+        opacity var(--lux-transition);
+}
+
+a:hover {
+    color: var(--lux-ivory);
+}
+
+/* Shared buttons */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.btn,
+.button,
+.primary-btn {
+    min-height: 44px;
+    padding: 11px 22px;
+    border: 1px solid var(--lux-gold);
+    border-radius: var(--lux-radius-pill);
+    color: #11100d;
+    background: var(--lux-gold);
+    font-family: var(--lux-font-body);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        background var(--lux-transition),
+        color var(--lux-transition),
+        border-color var(--lux-transition),
+        transform var(--lux-transition),
+        box-shadow var(--lux-transition);
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.btn:hover,
+.button:hover,
+.primary-btn:hover {
+    color: #11100d;
+    background: var(--lux-gold-light);
+    border-color: var(--lux-gold-light);
+    box-shadow: 0 8px 24px rgba(200, 169, 110, 0.16);
+    transform: translateY(-1px);
+}
+
+.btn-secondary,
+.secondary-btn,
+.btn-outline,
+button.is-secondary {
+    color: var(--lux-gold-light);
+    background: transparent;
+    border-color: var(--lux-border);
+}
+
+.btn-secondary:hover,
+.secondary-btn:hover,
+.btn-outline:hover,
+button.is-secondary:hover {
+    color: var(--lux-bg);
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+
+/* Disabled controls */
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled,
+button[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Form controls */
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+textarea,
+select {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 15px;
+    border: 1px solid var(--lux-border-soft);
+    border-radius: var(--lux-radius-sm);
+    outline: none;
+    color: var(--lux-ivory);
+    background: var(--lux-surface);
+    font: 400 13px var(--lux-font-body);
+    transition:
+        border-color var(--lux-transition),
+        box-shadow var(--lux-transition),
+        background var(--lux-transition);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #777166;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--lux-gold);
+    box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.10);
+    background: var(--lux-bg-soft);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--lux-gold);
+}
+
+label {
+    color: var(--lux-text);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Shared panels and cards */
+.card,
+.glass-card,
+.panel,
+.stat-card,
+.dashboard-card,
+.media-card,
+.project-card,
+.story-card,
+.service-card,
+.faq-item,
+.booking-card,
+.testimonial-card {
+    border: 1px solid var(--lux-border-soft);
+    border-radius: var(--lux-radius-md);
+    background: var(--lux-surface);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.16);
+}
+
+/* Small editorial labels */
+.eyebrow,
+.section-kicker,
+.section-label,
+.overline {
+    color: var(--lux-gold);
+    font-family: var(--lux-font-body);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+/* Gold utilities */
+.gold-text {
+    color: var(--lux-gold-light);
+}
+
+.gold-divider,
+.section-divider {
+    width: 54px;
+    height: 1px;
+    border: 0;
+    background: var(--lux-gold);
+}
+
+/* Badges and tags */
+.badge,
+.tag,
+.pill,
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border: 1px solid var(--lux-border);
+    border-radius: var(--lux-radius-pill);
+    color: var(--lux-gold-light);
+    background: rgba(200, 169, 110, 0.07);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+/* Shared site header */
+.site-header,
+.main-header,
+header.site-header {
+    border-bottom: 1px solid var(--lux-border-soft);
+    background: rgba(11, 11, 10, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.site-header a,
+.main-header a {
+    color: var(--lux-text);
+}
+
+.site-header a:hover,
+.main-header a:hover,
+.site-header a.active,
+.main-header a.active {
+    color: var(--lux-gold-light);
+}
+
+/* Footer */
+.site-footer,
+footer.site-footer {
+    border-top: 1px solid var(--lux-border-soft);
+    color: var(--lux-muted);
+    background: #080807;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--lux-text);
+    background: transparent;
+}
+
+thead th {
+    color: var(--lux-gold-light);
+    background: var(--lux-surface-raised);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+th,
+td {
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--lux-border-soft);
+}
+
+tbody tr:hover {
+    background: rgba(200, 169, 110, 0.045);
+}
+
+/* Dialog and modal surfaces */
+.modal-content,
+.modal-dialog,
+.dialog-panel {
+    border: 1px solid var(--lux-border);
+    border-radius: var(--lux-radius-lg);
+    color: var(--lux-text);
+    background: var(--lux-surface);
+    box-shadow: var(--lux-shadow);
+}
+
+/* Admin navigation surfaces */
+.admin-sidebar,
+.sidebar {
+    border-right: 1px solid var(--lux-border-soft);
+    background: #0e0e0c;
+}
+
+.admin-sidebar a,
+.sidebar a {
+    color: var(--lux-muted);
+    transition:
+        color var(--lux-transition),
+        background var(--lux-transition);
+}
+
+.admin-sidebar a:hover,
+.sidebar a:hover,
+.admin-sidebar a.active,
+.sidebar a.active {
+    color: var(--lux-gold-light);
+    background: rgba(200, 169, 110, 0.08);
+}
+
+/* Focus visibility for keyboard users */
+:focus-visible {
+    outline: 2px solid var(--lux-gold-light);
+    outline-offset: 3px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--lux-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    border: 2px solid var(--lux-bg);
+    border-radius: 20px;
+    background: #514633;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--lux-gold-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 13px;
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 12vw, 4.2rem);
+    }
+
+    h2 {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    button,
+    .btn,
+    .button,
+    .primary-btn {
+        min-height: 42px;
+        padding: 10px 18px;
+        font-size: 10px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   ZIRIA — PUBLIC PAGE LUXURY NORMALIZATION
+   Keep page-specific layouts and functionality intact while
+   replacing legacy light palettes with dark / champagne gold.
+   This section intentionally follows all shared base rules.
+   ========================================================= */
+
+/* Page canvases */
+body.home-page,
+body.about-page,
+body.contact-page,
+body.booking-page,
+body.stories-page,
+body.project-page,
+body.showreel-page,
+body.client-guide-page,
+body.client-gallery-page {
+    background: var(--lux-bg);
+    color: var(--lux-text);
+}
+
+/* Global editorial text on pages whose original CSS used dark ink */
+body.home-page h1, body.home-page h2, body.home-page h3,
+body.about-page h1, body.about-page h2, body.about-page h3,
+body.contact-page h1, body.contact-page h2, body.contact-page h3,
+body.booking-page h1, body.booking-page h2, body.booking-page h3,
+body.stories-page h1, body.stories-page h2, body.stories-page h3,
+body.project-page h1, body.project-page h2, body.project-page h3,
+body.showreel-page h1, body.showreel-page h2, body.showreel-page h3,
+body.client-guide-page h1, body.client-guide-page h2, body.client-guide-page h3,
+body.client-gallery-page h1, body.client-gallery-page h2, body.client-gallery-page h3 {
+    color: var(--lux-ivory);
+}
+
+/* Shared muted copy; accent labels and status messages are refined below */
+body.home-page p,
+body.about-page p,
+body.contact-page p,
+body.booking-page p,
+body.stories-page p,
+body.project-page p,
+body.showreel-page p,
+body.client-guide-page p,
+body.client-gallery-page p {
+    color: var(--lux-text);
+}
+
+/* =========================================================
+   HOME
+   ========================================================= */
+body.home-page .home-header {
+    background: rgba(11, 11, 10, 0.94);
+    border-bottom: 1px solid var(--lux-border-soft);
+}
+body.home-page .home-logo { color: var(--lux-ivory); }
+body.home-page .home-navigation a { color: var(--lux-muted); }
+body.home-page .home-navigation a:hover,
+body.home-page .home-navigation a.active { color: var(--lux-gold-light); }
+body.home-page .header-booking-link {
+    color: var(--lux-gold-light);
+    border-color: var(--lux-gold);
+}
+body.home-page .header-booking-link:hover {
+    color: var(--lux-bg);
+    background: var(--lux-gold);
+}
+body.home-page .home-featured,
+body.home-page .home-services,
+body.home-page .home-testimonials {
+    background: var(--lux-bg);
+}
+body.home-page .home-featured-card { color: var(--lux-ivory); }
+body.home-page .home-featured-image-wrap,
+body.home-page .home-about-image { background: var(--lux-surface-raised); }
+body.home-page .home-services-grid {
+    background: var(--lux-border-soft);
+    border-color: var(--lux-border-soft);
+}
+body.home-page .home-service-card,
+body.home-page .testimonial-card {
+    background: var(--lux-surface);
+    border: 1px solid var(--lux-border-soft);
+}
+body.home-page .home-about { background: #11110f; }
+body.home-page .home-footer {
+    background: #080807;
+    border-top: 1px solid var(--lux-border-soft);
+}
+body.home-page .home-footer-main { border-bottom-color: var(--lux-border-soft); }
+body.home-page .home-section-heading h2,
+body.home-page .home-center-heading h2,
+body.home-page .home-featured-details h3,
+body.home-page .home-service-card h3,
+body.home-page .home-about-content h2,
+body.home-page .testimonial-card h3 { color: var(--lux-ivory); }
+body.home-page .home-center-heading > p:last-child,
+body.home-page .home-featured-details p,
+body.home-page .home-section-message,
+body.home-page .home-service-card p,
+body.home-page .home-about-content > p:not(.eyebrow),
+body.home-page .testimonial-card p,
+body.home-page .testimonial-disclaimer,
+body.home-page .home-footer-main > div > p,
+body.home-page .home-footer-links a,
+body.home-page .home-footer-social a { color: var(--lux-muted); }
+body.home-page .home-featured-details span,
+body.home-page .service-number,
+body.home-page .testimonial-stars,
+body.home-page .testimonial-card span,
+body.home-page .home-view-all,
+body.home-page .home-about-link { color: var(--lux-gold); }
+body.home-page .home-category-fallback { color: var(--lux-ivory); }
+body.home-page .mobile-menu-toggle { color: var(--lux-gold-light); }
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+body.about-page .about-header {
+    background: rgba(11, 11, 10, 0.94);
+    border-bottom-color: var(--lux-border-soft);
+}
+body.about-page .about-logo { color: var(--lux-ivory); }
+body.about-page .about-header nav a { color: var(--lux-muted); }
+body.about-page .about-header nav a:hover,
+body.about-page .about-header nav a.active { color: var(--lux-gold-light); }
+body.about-page .about-booking-link {
+    color: var(--lux-gold-light);
+    border-color: var(--lux-gold);
+}
+body.about-page .about-hero > p:last-child,
+body.about-page .about-story-content p,
+body.about-page .about-approach-grid p,
+body.about-page .about-service-list p { color: var(--lux-muted); }
+body.about-page .about-approach { background: #11110f; }
+body.about-page .about-approach-grid {
+    background: var(--lux-border-soft);
+    border-color: var(--lux-border-soft);
+}
+body.about-page .about-approach-grid article,
+body.about-page .about-approach-grid article:hover {
+    background: var(--lux-surface);
+}
+body.about-page .about-approach-grid h3 { color: var(--lux-ivory); }
+body.about-page .about-approach-grid span,
+body.about-page .about-service-list span { color: var(--lux-gold); }
+body.about-page .about-service-list p { border-bottom-color: var(--lux-border-soft); }
+body.about-page .about-image-section { background: var(--lux-surface); }
+body.about-page #aboutImageFallback { color: var(--lux-muted); }
+body.about-page .about-footer {
+    background: #080807;
+    border-top: 1px solid var(--lux-border-soft);
+}
+body.about-page .about-footer p { color: var(--lux-muted); }
+body.about-page .about-cta > a { color: var(--lux-gold-light); }
+body.about-page .about-cta > a:hover { color: var(--lux-bg); }
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+body.contact-page .contact-header {
+    background: rgba(11, 11, 10, 0.94);
+    border-bottom-color: var(--lux-border-soft);
+}
+body.contact-page .contact-logo { color: var(--lux-ivory); }
+body.contact-page .contact-header nav a { color: var(--lux-muted); }
+body.contact-page .contact-header nav a:hover,
+body.contact-page .contact-header nav a.active { color: var(--lux-gold-light); }
+body.contact-page .contact-hero > p:last-child,
+body.contact-page .contact-information > p:not(.eyebrow),
+body.contact-page .contact-detail p,
+body.contact-page .contact-privacy-note { color: var(--lux-muted); }
+body.contact-page .contact-detail { border-bottom-color: var(--lux-border-soft); }
+body.contact-page .contact-detail a { color: var(--lux-ivory); }
+body.contact-page .contact-form-panel {
+    background: var(--lux-surface);
+    border-color: var(--lux-border-soft);
+}
+body.contact-page .contact-form-group label { color: var(--lux-text); }
+body.contact-page .contact-form-group input,
+body.contact-page .contact-form-group select,
+body.contact-page .contact-form-group textarea {
+    color: var(--lux-ivory);
+    background: #10100e;
+    border-color: var(--lux-border-soft);
+}
+body.contact-page .contact-form-group input:focus,
+body.contact-page .contact-form-group select:focus,
+body.contact-page .contact-form-group textarea:focus {
+    background: #0b0b0a;
+    border-color: var(--lux-gold);
+}
+body.contact-page .contact-form-group input::placeholder,
+body.contact-page .contact-form-group textarea::placeholder { color: #898174; }
+body.contact-page .contact-whatsapp-button,
+body.contact-page #submitEnquiryBtn {
+    color: #11100d;
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+body.contact-page .contact-whatsapp-button:hover,
+body.contact-page #submitEnquiryBtn:hover:not(:disabled) {
+    color: #11100d;
+    background: var(--lux-gold-light);
+}
+body.contact-page .contact-footer {
+    background: #080807;
+    border-top: 1px solid var(--lux-border-soft);
+}
+body.contact-page .contact-footer p { color: var(--lux-muted); }
+
+/* =========================================================
+   BOOKING
+   ========================================================= */
+body.booking-page .booking-header {
+    background: rgba(11, 11, 10, 0.96);
+    border-bottom-color: var(--lux-border-soft);
+}
+body.booking-page .booking-brand,
+body.booking-page .booking-brand-main { color: var(--lux-ivory); }
+body.booking-page .booking-brand-sub { color: var(--lux-muted); }
+body.booking-page .booking-navigation a,
+body.booking-page .booking-header-link { color: var(--lux-muted); }
+body.booking-page .booking-navigation a:hover,
+body.booking-page .booking-header-link:hover { color: var(--lux-gold-light); }
+body.booking-page .booking-header-link { border-color: var(--lux-gold); }
+body.booking-page .booking-hero > p:last-child,
+body.booking-page .booking-aside-copy,
+body.booking-page .booking-aside-note,
+body.booking-page .booking-aside-details p { color: var(--lux-muted); }
+body.booking-page .booking-aside-details > div { border-bottom-color: var(--lux-border-soft); }
+body.booking-page .booking-form-card {
+    background: var(--lux-surface);
+    border: 1px solid var(--lux-border-soft);
+    box-shadow: var(--lux-shadow);
+}
+body.booking-page .booking-progress-top,
+body.booking-page .booking-navigation-hint,
+body.booking-page .booking-review-intro,
+body.booking-page .booking-field-hint,
+body.booking-page .booking-field > small,
+body.booking-page .booking-consent,
+body.booking-page .booking-review-row span:first-child { color: var(--lux-muted); }
+body.booking-page .booking-progress-top span:last-child { color: var(--lux-gold-light); }
+body.booking-page .booking-progress-segment { background: #39352b; }
+body.booking-page .booking-progress-segment.active { background: var(--lux-gold); }
+body.booking-page .booking-field-label { color: var(--lux-text); }
+body.booking-page .booking-field input:not([type="radio"]):not([type="checkbox"]),
+body.booking-page .booking-field select,
+body.booking-page .booking-field textarea {
+    color: var(--lux-ivory);
+    background: #10100e;
+    border-color: var(--lux-border-soft);
+}
+body.booking-page .booking-field input:focus,
+body.booking-page .booking-field select:focus,
+body.booking-page .booking-field textarea:focus { border-color: var(--lux-gold); }
+body.booking-page .booking-field input::placeholder,
+body.booking-page .booking-field textarea::placeholder { color: #81796c; }
+body.booking-page .booking-choice-content {
+    background: #10100e;
+    border-color: var(--lux-border-soft);
+}
+body.booking-page .booking-choice-content strong { color: var(--lux-ivory); }
+body.booking-page .booking-choice-content small { color: var(--lux-muted); }
+body.booking-page .booking-choice-card > input:checked + .booking-choice-content {
+    background: rgba(200, 169, 110, 0.10);
+    border-color: var(--lux-gold);
+}
+body.booking-page .booking-form-navigation,
+body.booking-page .booking-review,
+body.booking-page .booking-review-row { border-color: var(--lux-border-soft); }
+body.booking-page .booking-review-row span:last-child { color: var(--lux-ivory); }
+body.booking-page .booking-next-button,
+body.booking-page .booking-submit-button,
+body.booking-page .booking-whatsapp-button {
+    color: #11100d;
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+body.booking-page .booking-next-button:hover,
+body.booking-page .booking-submit-button:hover,
+body.booking-page .booking-whatsapp-button:hover { background: var(--lux-gold-light); }
+body.booking-page .booking-back-button,
+body.booking-page .booking-home-link { color: var(--lux-gold-light); }
+body.booking-page .booking-success > p:not(.booking-eyebrow) { color: var(--lux-muted); }
+body.booking-page .booking-success-mark { color: var(--lux-gold-light); border-color: var(--lux-gold); }
+body.booking-page .booking-footer {
+    background: #080807;
+    border-top-color: var(--lux-border-soft);
+    color: var(--lux-muted);
+}
+body.booking-page .booking-footer-brand { color: var(--lux-ivory) !important; }
+
+/* =========================================================
+   STORIES
+   ========================================================= */
+body.stories-page .stories-header {
+    background: rgba(11, 11, 10, 0.95);
+    border-bottom-color: var(--lux-border-soft);
+}
+body.stories-page .stories-logo { color: var(--lux-ivory); }
+body.stories-page .stories-navigation a,
+body.stories-page .stories-header-cta { color: var(--lux-muted); }
+body.stories-page .stories-navigation a:hover,
+body.stories-page .stories-navigation a[aria-current="page"] { color: var(--lux-gold-light); }
+body.stories-page .stories-header-cta { border-color: var(--lux-gold); }
+body.stories-page .stories-eyebrow,
+body.stories-page .stories-count,
+body.stories-page .story-card-meta,
+body.stories-page .story-card-featured { color: var(--lux-gold-muted); }
+body.stories-page .stories-hero-description,
+body.stories-page .story-card-excerpt,
+body.stories-page .stories-loading,
+body.stories-page .stories-empty { color: var(--lux-muted); }
+body.stories-page .stories-toolbar { border-bottom-color: var(--lux-border-soft); }
+body.stories-page .story-filter {
+    color: var(--lux-text);
+    background: transparent;
+    border-color: var(--lux-border);
+}
+body.stories-page .story-filter:hover,
+body.stories-page .story-filter.active {
+    color: #11100d;
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+body.stories-page .stories-search input {
+    color: var(--lux-ivory);
+    border-bottom-color: var(--lux-border);
+}
+body.stories-page .stories-search input:focus { border-bottom-color: var(--lux-gold); }
+body.stories-page .story-card-image-wrap { background: var(--lux-surface); }
+body.stories-page .story-card h3 { color: var(--lux-ivory); }
+body.stories-page .stories-bottom-cta { background: #14130f; }
+body.stories-page .stories-button {
+    color: #11100d;
+    background: var(--lux-gold);
+}
+body.stories-page .stories-button:hover { background: var(--lux-gold-light); }
+body.stories-page .stories-footer {
+    background: #080807;
+    border-top: 1px solid var(--lux-border-soft);
+    color: var(--lux-muted);
+}
+body.stories-page .stories-footer-logo { color: var(--lux-ivory) !important; }
+
+/* =========================================================
+   PROJECT DETAIL
+   ========================================================= */
+body.project-page .project-header {
+    background: rgba(11, 11, 10, 0.95);
+    border-bottom-color: var(--lux-border-soft);
+}
+body.project-page .project-logo { color: var(--lux-ivory); }
+body.project-page .project-navigation a,
+body.project-page .project-header-cta { color: var(--lux-muted); }
+body.project-page .project-navigation a:hover,
+body.project-page .project-header-cta:hover { color: var(--lux-gold-light); }
+body.project-page .project-header-cta { border-color: var(--lux-gold); }
+body.project-page .project-back-link,
+body.project-page .project-excerpt,
+body.project-page .project-story-text,
+body.project-page .project-gallery-heading > p,
+body.project-page .project-no-photos,
+body.project-page .project-status { color: var(--lux-muted); }
+body.project-page .project-details { border-top-color: var(--lux-border-soft); }
+body.project-page .project-details span { color: var(--lux-gold-muted); }
+body.project-page .project-details p { color: var(--lux-text); }
+body.project-page .project-cover,
+body.project-page .project-gallery-item { background: var(--lux-surface); }
+body.project-page .project-bottom-cta { background: #14130f; }
+body.project-page .project-cta-button {
+    color: #11100d;
+    background: var(--lux-gold);
+}
+body.project-page .project-cta-button:hover { background: var(--lux-gold-light); }
+body.project-page .project-all-stories-link { color: var(--lux-gold-light); }
+body.project-page .project-footer {
+    background: #080807;
+    border-top: 1px solid var(--lux-border-soft);
+    color: var(--lux-muted);
+}
+body.project-page .project-footer-logo { color: var(--lux-ivory) !important; }
+body.project-page .project-status h1 { color: var(--lux-ivory); }
+
+/* =========================================================
+   SHOWREEL
+   The showreel is already predominantly dark. These rules
+   remove its remaining light CTA/button surfaces.
+   ========================================================= */
+body.showreel-page .showreel-watch-button {
+    color: #11100d;
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+body.showreel-page .showreel-watch-button:hover:not(:disabled) {
+    color: #11100d;
+    background: var(--lux-gold-light);
+}
+body.showreel-page .showreel-contact {
+    color: var(--lux-text);
+    background: #14130f;
+    border-top: 1px solid var(--lux-border-soft);
+}
+body.showreel-page .showreel-contact .showreel-eyebrow { color: var(--lux-gold); }
+body.showreel-page .showreel-contact > p:not(.showreel-eyebrow) { color: var(--lux-muted); }
+body.showreel-page .showreel-contact-button {
+    color: #11100d;
+    background: var(--lux-gold);
+}
+body.showreel-page .showreel-contact-button:hover { background: var(--lux-gold-light); }
+
+/* =========================================================
+   CLIENT GUIDE
+   ========================================================= */
+body.client-guide-page .guide-header {
+    background: rgba(11, 11, 10, 0.96);
+    border-bottom-color: var(--lux-border-soft);
+}
+body.client-guide-page .guide-brand { color: var(--lux-ivory); }
+body.client-guide-page .guide-brand-sub { color: var(--lux-muted); }
+body.client-guide-page .guide-navigation a,
+body.client-guide-page .guide-header-cta { color: var(--lux-muted); }
+body.client-guide-page .guide-navigation a:hover,
+body.client-guide-page .guide-navigation a[aria-current="page"] { color: var(--lux-gold-light); }
+body.client-guide-page .guide-header-cta { border-color: var(--lux-gold); }
+body.client-guide-page .guide-eyebrow,
+body.client-guide-page .guide-process-number,
+body.client-guide-page .guide-testimonial-quote-mark,
+body.client-guide-page .guide-testimonial-rating { color: var(--lux-gold); }
+body.client-guide-page .guide-hero > p:not(.guide-eyebrow),
+body.client-guide-page .guide-section-heading > p,
+body.client-guide-page .guide-process-card p,
+body.client-guide-page .guide-testimonial-client span,
+body.client-guide-page .guide-faq-intro > p:last-child,
+body.client-guide-page .guide-faq-answer p,
+body.client-guide-page .guide-faq-empty,
+body.client-guide-page .guide-bottom-cta > p:not(.guide-eyebrow) { color: var(--lux-muted); }
+body.client-guide-page .guide-primary-button {
+    color: #11100d;
+    background: var(--lux-gold);
+}
+body.client-guide-page .guide-primary-button:hover { background: var(--lux-gold-light); }
+body.client-guide-page .guide-process,
+body.client-guide-page .guide-faq { background: #11110f; }
+body.client-guide-page .guide-process-grid { background: var(--lux-border-soft); }
+body.client-guide-page .guide-process-card {
+    background: var(--lux-surface);
+    border-top-color: var(--lux-border);
+}
+body.client-guide-page .guide-process-card h3,
+body.client-guide-page .guide-testimonial-client strong,
+body.client-guide-page .guide-faq-item summary { color: var(--lux-ivory); }
+body.client-guide-page .guide-testimonial-card {
+    background: var(--lux-surface);
+    border-color: var(--lux-border-soft);
+}
+body.client-guide-page .guide-testimonial-text { color: var(--lux-text); }
+body.client-guide-page .guide-testimonial-client { border-top-color: var(--lux-border-soft); }
+body.client-guide-page .guide-faq-search input {
+    color: var(--lux-ivory);
+    background: #0b0b0a;
+    border-color: var(--lux-border-soft);
+}
+body.client-guide-page .guide-faq-filter {
+    color: var(--lux-text);
+    border-color: var(--lux-border);
+}
+body.client-guide-page .guide-faq-filter.active,
+body.client-guide-page .guide-faq-filter:hover {
+    color: #11100d;
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+body.client-guide-page .guide-faq-item,
+body.client-guide-page .guide-faq-item:last-child { border-color: var(--lux-border-soft); }
+body.client-guide-page .guide-faq-item summary > span::before,
+body.client-guide-page .guide-faq-item summary > span::after { background: var(--lux-gold); }
+body.client-guide-page .guide-bottom-cta { background: #14130f; }
+body.client-guide-page .guide-footer {
+    background: #080807;
+    border-top: 1px solid var(--lux-border-soft);
+    color: var(--lux-muted);
+}
+body.client-guide-page .guide-footer-brand { color: var(--lux-ivory) !important; }
+
+/* =========================================================
+   PRIVATE CLIENT GALLERY
+   ========================================================= */
+body.client-gallery-page .client-gallery-header {
+    background: #0e0e0c;
+    border-bottom-color: var(--lux-border-soft);
+}
+body.client-gallery-page .client-gallery-brand { color: var(--lux-ivory); }
+body.client-gallery-page .client-gallery-brand small,
+body.client-gallery-page .client-gallery-private-label { color: var(--lux-gold-muted); }
+body.client-gallery-page .gallery-eyebrow,
+body.client-gallery-page .gallery-lock-icon,
+body.client-gallery-page .gallery-client-name,
+body.client-gallery-page .gallery-thank-you-icon { color: var(--lux-gold); }
+body.client-gallery-page .gallery-locked h1,
+body.client-gallery-page .gallery-thank-you h2 { color: var(--lux-ivory); }
+body.client-gallery-page .gallery-locked-copy,
+body.client-gallery-page .gallery-secure-note,
+body.client-gallery-page .gallery-loading,
+body.client-gallery-page .gallery-toolbar span,
+body.client-gallery-page .gallery-empty,
+body.client-gallery-page .gallery-selection-panel > div > p:last-child,
+body.client-gallery-page .gallery-selection-status,
+body.client-gallery-page .gallery-thank-you > p:last-child { color: var(--lux-muted); }
+body.client-gallery-page .gallery-lock-icon,
+body.client-gallery-page .gallery-thank-you-icon { border-color: var(--lux-border); }
+body.client-gallery-page .gallery-unlock-form label,
+body.client-gallery-page .gallery-note-field span { color: var(--lux-text); }
+body.client-gallery-page .gallery-unlock-form input,
+body.client-gallery-page .gallery-note-field textarea {
+    color: var(--lux-ivory);
+    background: #10100e;
+    border-color: var(--lux-border-soft);
+}
+body.client-gallery-page .gallery-unlock-form input:focus,
+body.client-gallery-page .gallery-note-field textarea:focus {
+    border-color: var(--lux-gold);
+    outline-color: var(--lux-gold);
+}
+body.client-gallery-page .gallery-unlock-form button,
+body.client-gallery-page .gallery-submit-button {
+    color: #11100d;
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+body.client-gallery-page .gallery-unlock-form button:hover,
+body.client-gallery-page .gallery-submit-button:hover { background: var(--lux-gold-light); }
+body.client-gallery-page .gallery-toolbar strong { color: var(--lux-ivory); }
+body.client-gallery-page .gallery-toolbar button {
+    color: var(--lux-text);
+    background: transparent;
+    border-color: var(--lux-border);
+}
+body.client-gallery-page .gallery-photo-card { background: var(--lux-surface); }
+body.client-gallery-page .gallery-favorite-button[aria-pressed="true"] {
+    color: #11100d;
+    background: var(--lux-gold);
+    border-color: var(--lux-gold);
+}
+body.client-gallery-page .gallery-download-link {
+    color: var(--lux-ivory);
+    border: 1px solid var(--lux-border);
+}
+body.client-gallery-page .gallery-photo-caption {
+    color: var(--lux-text);
+    background: var(--lux-surface);
+    border-top: 1px solid var(--lux-border-soft);
+}
+body.client-gallery-page .gallery-selection-panel,
+body.client-gallery-page .gallery-thank-you { background: var(--lux-surface); }
+body.client-gallery-page .gallery-selection-panel { border: 1px solid var(--lux-border-soft); }
+body.client-gallery-page .gallery-note-field textarea::placeholder { color: var(--lux-muted); }
+body.client-gallery-page .client-gallery-footer {
+    color: var(--lux-muted);
+    background: #080807;
+    border-top-color: var(--lux-border-soft);
+}
+body.client-gallery-page .client-gallery-footer span { color: var(--lux-ivory); }
+
+/* Films already uses a dark cinematic palette; harmonize accents only. */
+.films-page .film-card { border-color: var(--lux-border-soft); }
+.films-page .film-card:hover { border-color: var(--lux-gold); }
+.films-page .films-kicker,
+.films-page .film-category { color: var(--lux-gold); }
+
+/* 404 page keeps its existing gold button treatment after the shared link reset. */
+.error-container a {
+    color: #11100d;
+    background: var(--lux-gold);
+    border: 1px solid var(--lux-gold);
+}
+.error-container a:hover {
+    color: #11100d;
+    background: var(--lux-gold-light);
+    border-color: var(--lux-gold-light);
+}

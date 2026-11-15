@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Client Galleries | Admin</title>
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-client-galleries.css">
+    <link rel="stylesheet" href="../css/luxury-theme.css">
+</head>
+
+<body class="admin-client-galleries-page">
+
+<div class="client-admin-layout">
+
+    <aside class="client-admin-sidebar">
+
+        <a href="dashboard.html" class="client-admin-brand">
+            STUDIO
+            <span>ADMIN</span>
+        </a>
+
+        <nav aria-label="Admin navigation">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="media.html">Media Library</a>
+            <a href="categories.html">Categories</a>
+            <a href="enquiries.html">Enquiries</a>
+            <a href="projects.html">Projects & Stories</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="client-galleries.html"
+               class="active"
+               aria-current="page">
+                Client Galleries
+            </a>
+        </nav>
+
+        <button type="button"
+                id="client-admin-logout"
+                class="client-admin-logout">
+            Log out
+        </button>
+
+    </aside>
+
+
+    <main class="client-admin-main">
+
+        <header class="client-admin-header">
+            <div>
+                <p class="client-admin-eyebrow">PRIVATE CLIENT DELIVERY</p>
+                <h1>Client galleries</h1>
+                <p>
+                    Create private collections, share access with clients
+                    and review their selected photographs.
+                </p>
+            </div>
+        </header>
+
+
+        <!-- CREATE / EDIT GALLERY -->
+
+        <section class="client-admin-panel">
+
+            <div class="client-admin-panel-heading">
+                <div>
+                    <p class="client-admin-eyebrow">GALLERY MANAGER</p>
+                    <h2 id="client-gallery-form-heading">
+                        Create a private gallery
+                    </h2>
+                </div>
+
+                <span id="client-gallery-editor-status">
+                    New gallery
+                </span>
+            </div>
+
+
+            <form id="client-gallery-form">
+
+                <input type="hidden" id="client-gallery-id">
+
+                <div class="client-gallery-form-grid">
+
+                    <label class="client-gallery-field">
+                        <span>Gallery title *</span>
+
+                        <input
+                                type="text"
+                                id="client-gallery-title"
+                                maxlength="150"
+                                required
+                                placeholder="Example: Alex & Maya Wedding">
+                    </label>
+
+
+                    <label class="client-gallery-field">
+                        <span>Client name</span>
+
+                        <input
+                                type="text"
+                                id="client-gallery-client-name"
+                                maxlength="120"
+                                placeholder="Alex & Maya">
+                    </label>
+
+
+                    <label class="client-gallery-field">
+                        <span>Private gallery URL slug *</span>
+
+                        <input
+                                type="text"
+                                id="client-gallery-slug"
+                                maxlength="150"
+                                pattern="[a-z0-9]+(-[a-z0-9]+)*"
+                                required
+                                placeholder="alex-maya-wedding">
+
+                        <small>
+                            Lowercase letters, numbers and hyphens only.
+                        </small>
+                    </label>
+
+
+                    <label class="client-gallery-field">
+                        <span>Event date</span>
+
+                        <input type="date"
+                               id="client-gallery-event-date">
+                    </label>
+
+
+                    <label class="client-gallery-field">
+                        <span>Gallery expiry date and time</span>
+
+                        <input
+                                type="datetime-local"
+                                id="client-gallery-expires-at">
+
+                        <small>
+                            Leave blank for no automatic expiry.
+                        </small>
+                    </label>
+
+
+                    <label class="client-gallery-field">
+                        <span>Gallery password *</span>
+
+                        <input
+                                type="password"
+                                id="client-gallery-password"
+                                minlength="8"
+                                maxlength="128"
+                                autocomplete="new-password"
+                                placeholder="At least 8 characters">
+
+                        <small>
+                            Required for a new gallery. For an existing
+                            gallery, enter a new password only when rotating it.
+                        </small>
+                    </label>
+
+                </div>
+
+
+                <div class="client-gallery-options">
+
+                    <label class="client-gallery-check">
+                        <input type="checkbox"
+                               id="client-gallery-active"
+                               checked>
+
+                        <span>
+                            <strong>Gallery active</strong>
+                            <small>Allow clients to unlock this gallery.</small>
+                        </span>
+                    </label>
+
+
+                    <label class="client-gallery-check">
+                        <input type="checkbox"
+                               id="client-gallery-downloads">
+
+                        <span>
+                            <strong>Enable download links</strong>
+                            <small>Show temporary image download links to clients.</small>
+                        </span>
+                    </label>
+
+
+                    <label class="client-gallery-check">
+                        <input type="checkbox"
+                               id="client-gallery-favorites"
+                               checked>
+
+                        <span>
+                            <strong>Allow favourites</strong>
+                            <small>Let clients mark photographs they like.</small>
+                        </span>
+                    </label>
+
+
+                    <label class="client-gallery-check">
+                        <input type="checkbox"
+                               id="client-gallery-selection"
+                               checked>
+
+                        <span>
+                            <strong>Allow final selection</strong>
+                            <small>Allow clients to submit their favourite photographs.</small>
+                        </span>
+                    </label>
+
+                </div>
+
+
+                <div class="client-gallery-form-actions">
+
+                    <button type="submit"
+                            id="client-gallery-save"
+                            class="client-gallery-save">
+                        Save gallery
+                    </button>
+
+                    <button type="button"
+                            id="client-gallery-reset"
+                            class="client-gallery-reset">
+                        Clear form
+                    </button>
+
+                    <button type="button"
+                            id="client-gallery-copy-password"
+                            class="client-gallery-reset">
+                        Copy password
+                    </button>
+
+                </div>
+
+
+                <p id="client-gallery-form-message"
+                   class="client-gallery-form-message"
+                   role="status"
+                   aria-live="polite">
+                </p>
+
+                <p class="client-gallery-security-note">
+                    The gallery URL and password must be shared separately.
+                    The password cannot be retrieved after saving its hash.
+                </p>
+
+            </form>
+
+        </section>
+
+
+        <!-- EXISTING GALLERIES -->
+
+        <section class="client-admin-panel">
+
+            <div class="client-admin-panel-heading">
+
+                <div>
+                    <p class="client-admin-eyebrow">PRIVATE COLLECTIONS</p>
+                    <h2>Existing galleries</h2>
+                </div>
+
+                <button type="button"
+                        id="client-gallery-refresh"
+                        class="client-gallery-refresh">
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+
+            <div id="client-gallery-list"
+                 class="client-gallery-list">
+
+                <p class="client-gallery-empty">
+                    Loading galleries...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SELECTED GALLERY WORKSPACE -->
+
+        <section id="client-gallery-workspace"
+                 class="client-admin-panel"
+                 hidden>
+
+            <div class="client-admin-panel-heading">
+
+                <div>
+                    <p class="client-admin-eyebrow">SELECTED COLLECTION</p>
+                    <h2 id="client-gallery-workspace-title">
+                        Gallery photographs
+                    </h2>
+                </div>
+
+                <span id="client-gallery-workspace-count">
+                    0 photos
+                </span>
+
+            </div>
+
+
+            <div class="client-gallery-share">
+
+                <div>
+                    <p class="client-admin-eyebrow">PRIVATE SHARE LINK</p>
+                    <p id="client-gallery-share-url"></p>
+                </div>
+
+                <button type="button"
+                        id="client-gallery-copy-link">
+                    Copy link
+                </button>
+
+            </div>
+
+
+            <!-- UPLOAD -->
+
+            <div class="client-gallery-upload">
+
+                <div>
+                    <h3>Upload private photographs</h3>
+                    <p>
+                        JPEG, PNG and WebP. Maximum 6 MB per image.
+                        These photos are stored separately from your public portfolio.
+                    </p>
+                </div>
+
+                <label class="client-gallery-file-picker">
+                    <span>Choose photographs</span>
+
+                    <input
+                            type="file"
+                            id="client-gallery-files"
+                            accept="image/jpeg,image/png,image/webp"
+                            multiple>
+                </label>
+
+                <button type="button"
+                        id="client-gallery-upload-button"
+                        disabled>
+                    Upload selected files
+                </button>
+
+                <p id="client-gallery-upload-status"
+                   class="client-gallery-upload-status"
+                   role="status"
+                   aria-live="polite">
+                </p>
+
+            </div>
+
+
+            <!-- PHOTO LIBRARY -->
+
+            <div id="client-gallery-photo-list"
+                 class="client-gallery-photo-list">
+
+                <p class="client-gallery-empty">
+                    Select a gallery to view its photographs.
+                </p>
+
+            </div>
+
+
+            <!-- CLIENT SUBMISSIONS -->
+
+            <div class="client-gallery-submissions">
+
+                <div class="client-admin-panel-heading">
+                    <div>
+                        <p class="client-admin-eyebrow">CLIENT PROOFING</p>
+                        <h2>Submitted selections</h2>
+                    </div>
+                </div>
+
+                <div id="client-gallery-submission-list"
+                     class="client-gallery-submission-list">
+
+                    <p class="client-gallery-empty">
+                        No submissions loaded.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/admin/client-galleries.js"></script>
+
+</body>
+</html>
