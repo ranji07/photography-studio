@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Testimonials Manager | Admin</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-testimonials.css">
+</head>
+
+<body class="admin-testimonials-page">
+
+<div class="testimonial-admin-layout">
+
+    <aside class="testimonial-sidebar">
+
+        <a href="dashboard.html" class="testimonial-admin-brand">
+            STUDIO
+            <span>ADMIN</span>
+        </a>
+
+        <nav aria-label="Admin navigation">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="media.html">Media Library</a>
+            <a href="categories.html">Categories</a>
+            <a href="enquiries.html">Enquiries</a>
+            <a href="projects.html">Projects & Stories</a>
+            <a href="testimonials.html"
+               class="active"
+               aria-current="page">
+                Testimonials
+            </a>
+        </nav>
+
+        <button type="button"
+                id="testimonial-logout"
+                class="testimonial-logout">
+            Log out
+        </button>
+
+    </aside>
+
+
+    <main class="testimonial-admin-main">
+
+        <header class="testimonial-admin-header">
+
+            <div>
+                <p class="testimonial-admin-eyebrow">
+                    CLIENT RELATIONSHIPS
+                </p>
+
+                <h1>Testimonials</h1>
+
+                <p>
+                    Manage genuine client feedback displayed on your
+                    public Client Guide page.
+                </p>
+            </div>
+
+        </header>
+
+
+        <!-- EDITOR -->
+
+        <section class="testimonial-panel">
+
+            <div class="testimonial-panel-heading">
+
+                <div>
+                    <p class="testimonial-admin-eyebrow">
+                        TESTIMONIAL EDITOR
+                    </p>
+
+                    <h2 id="testimonial-form-heading">
+                        Add client feedback
+                    </h2>
+                </div>
+
+                <span id="testimonial-editor-status">
+                    New testimonial
+                </span>
+
+            </div>
+
+
+            <form id="testimonial-form">
+
+                <input type="hidden" id="testimonial-id">
+
+                <div class="testimonial-form-grid">
+
+                    <label class="testimonial-field">
+                        <span>Client name *</span>
+
+                        <input
+                                type="text"
+                                id="testimonial-client-name"
+                                minlength="2"
+                                maxlength="100"
+                                required
+                                placeholder="Client name">
+                    </label>
+
+
+                    <label class="testimonial-field">
+                        <span>Event type</span>
+
+                        <input
+                                type="text"
+                                id="testimonial-event-type"
+                                maxlength="80"
+                                placeholder="Wedding, Portrait...">
+                    </label>
+
+
+                    <label class="testimonial-field">
+                        <span>Location</span>
+
+                        <input
+                                type="text"
+                                id="testimonial-location"
+                                maxlength="120"
+                                placeholder="Ubud, Bali">
+                    </label>
+
+
+                    <label class="testimonial-field">
+                        <span>Client rating</span>
+
+                        <select id="testimonial-rating">
+                            <option value="">No rating supplied</option>
+                            <option value="5">5 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="2">2 stars</option>
+                            <option value="1">1 star</option>
+                        </select>
+                    </label>
+
+
+                    <label class="testimonial-field testimonial-field-full">
+                        <span>Client feedback *</span>
+
+                        <textarea
+                                id="testimonial-quote"
+                                rows="6"
+                                minlength="10"
+                                maxlength="1500"
+                                required
+                                placeholder="Enter the client's actual feedback, preserving their intended words."></textarea>
+
+                        <small>
+                            Maximum 1,500 characters. Do not invent or
+                            rewrite feedback as a client quotation
+                            without their approval.
+                        </small>
+                    </label>
+
+
+                    <label class="testimonial-field">
+                        <span>Display order</span>
+
+                        <input
+                                type="number"
+                                id="testimonial-order"
+                                min="0"
+                                step="1"
+                                value="0">
+                        <small>Lower numbers appear first.</small>
+                    </label>
+
+                </div>
+
+
+                <div class="testimonial-publishing-options">
+
+                    <label class="testimonial-check">
+                        <input
+                                type="checkbox"
+                                id="testimonial-featured">
+
+                        <span>
+                            <strong>Featured testimonial</strong>
+                            <small>Give this feedback priority in the public section.</small>
+                        </span>
+                    </label>
+
+
+                    <label class="testimonial-check">
+                        <input
+                                type="checkbox"
+                                id="testimonial-published">
+
+                        <span>
+                            <strong>Publish testimonial</strong>
+                            <small>Make the feedback visible on the Client Guide.</small>
+                        </span>
+                    </label>
+
+
+                    <label class="testimonial-check testimonial-consent-check">
+                        <input
+                                type="checkbox"
+                                id="testimonial-consent">
+
+                        <span>
+                            <strong>Client publication permission confirmed *</strong>
+                            <small>
+                                I have permission from this client to publish
+                                their feedback and displayed name.
+                            </small>
+                        </span>
+                    </label>
+
+                </div>
+
+
+                <div class="testimonial-form-actions">
+
+                    <button type="submit"
+                            id="testimonial-save-button"
+                            class="testimonial-save-button">
+                        Save testimonial
+                    </button>
+
+                    <button type="button"
+                            id="testimonial-reset-button"
+                            class="testimonial-reset-button">
+                        Clear form
+                    </button>
+
+                </div>
+
+
+                <p id="testimonial-form-message"
+                   class="testimonial-form-message"
+                   role="status"
+                   aria-live="polite">
+                </p>
+
+            </form>
+
+        </section>
+
+
+        <!-- EXISTING TESTIMONIALS -->
+
+        <section class="testimonial-panel">
+
+            <div class="testimonial-panel-heading">
+
+                <div>
+                    <p class="testimonial-admin-eyebrow">
+                        CONTENT LIBRARY
+                    </p>
+
+                    <h2>Existing testimonials</h2>
+                </div>
+
+                <button type="button"
+                        id="testimonial-refresh"
+                        class="testimonial-refresh">
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+
+            <div id="testimonial-list"
+                 class="testimonial-list">
+
+                <p class="testimonial-list-empty">
+                    Loading testimonials...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/admin/testimonials.js"></script>
+
+</body>
+</html>

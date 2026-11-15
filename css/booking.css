@@ -718,3 +718,17 @@
 .booking-page textarea:focus-visible {
     outline-offset: 4px;
 }
+/* Step 22 - Client Guide links inside booking experience */
+
+.booking-guide-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #806b49;
+    font-size: 11px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.booking-guide-link:hover {
+    color: #292821;
+}
