@@ -185,6 +185,7 @@ async function loadPublishedImages() {
             media_type,
             file_url,
             is_featured,
+            is_home_hero,
             created_at
         `)
 
@@ -400,6 +401,8 @@ function renderHero(images) {
 
 
     const selectedImage = images.find(
+        image => image.is_home_hero
+    ) || images.find(
         image => image.is_featured
     ) || images[0];
 

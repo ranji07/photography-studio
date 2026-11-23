@@ -1063,3 +1063,151 @@ body.client-gallery-page .client-gallery-footer span { color: var(--lux-ivory); 
     background: var(--lux-gold-light);
     border-color: var(--lux-gold-light);
 }
+
+/* =====================================================
+   ZIRIA HOME HERO — PORTRAIT IMAGE FIT
+   Preserve the complete photograph without cropping
+   ===================================================== */
+
+.home-page .home-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 690px;
+    background: #090908;
+}
+
+/* Full portrait image on the right */
+.home-page .home-hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+
+    width: 58%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: right center;
+
+    opacity: 1;
+    z-index: 0;
+
+    /* Fade image into the black background */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.25) 17%,
+        rgba(0, 0, 0, 0.75) 38%,
+        #000 58%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.25) 17%,
+        rgba(0, 0, 0, 0.75) 38%,
+        #000 58%
+    );
+}
+
+/* Gradient overlay for readable text */
+.home-page .home-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background: linear-gradient(
+        90deg,
+        #090908 0%,
+        rgba(9, 9, 8, 0.98) 32%,
+        rgba(9, 9, 8, 0.76) 53%,
+        rgba(9, 9, 8, 0.08) 100%
+    );
+}
+
+/* Keep text above the photograph */
+.home-page .home-hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 58%;
+    max-width: 690px;
+}
+
+/* Tablet and mobile */
+@media (max-width: 760px) {
+    .home-page .home-hero {
+        min-height: 740px;
+        align-items: flex-start;
+        padding-bottom: 260px;
+    }
+
+    .home-page .home-hero-image {
+        top: auto;
+        right: 0;
+        bottom: 0;
+
+        width: 82%;
+        height: 64%;
+
+        object-fit: contain;
+        object-position: right bottom;
+
+        opacity: 0.72;
+
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.5) 35%,
+            #000 65%
+        );
+
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.5) 35%,
+            #000 65%
+        );
+    }
+
+    .home-page .home-hero-overlay {
+        background: linear-gradient(
+            90deg,
+            rgba(9, 9, 8, 0.98) 0%,
+            rgba(9, 9, 8, 0.85) 48%,
+            rgba(9, 9, 8, 0.22) 100%
+        );
+    }
+
+    .home-page .home-hero-content {
+        width: 100%;
+        max-width: 620px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-page .home-hero {
+        min-height: 680px;
+        padding-bottom: 240px;
+    }
+
+    .home-page .home-hero-image {
+        width: 88%;
+        height: 58%;
+        opacity: 0.62;
+    }
+}
+/* Portfolio gallery — sharp square corners */
+
+.portfolio-page .portfolio-card,
+.portfolio-page .portfolio-image-button,
+.portfolio-page .portfolio-image-button img,
+.portfolio-page .portfolio-image-fallback {
+    border-radius: 0 !important;
+}
+
+.portfolio-page .portfolio-image-button {
+    overflow: hidden;
+}

@@ -81,6 +81,7 @@ async function loadMediaLibrary() {
             file_url,
             storage_path,
             is_published,
+            is_home_hero,
             created_at
         `)
         .order("created_at", { ascending: false });
@@ -127,7 +128,11 @@ function renderMediaLibrary() {
             "<p>No media found for the selected filters.</p>";
         return;
     }
-
+const currentHomeHero = mediaItems.find(item =>
+    item.is_home_hero &&
+    item.is_published &&
+    ["image", "photo"].includes(item.media_type)
+);
     filteredItems.forEach(item => {
         const category = categories.find(
             c => c.id === item.category_id
@@ -143,7 +148,7 @@ function renderMediaLibrary() {
         const preview = document.createElement("div");
         preview.className = "media-preview";
 
-       if (item.media_type === "image") {
+       if (["image", "photo"].includes(item.media_type)) {
 
            const image = document.createElement("img");
            image.src = item.file_url;
@@ -178,7 +183,9 @@ function renderMediaLibrary() {
 
         const typeText = document.createElement("p");
         typeText.textContent =
-            item.media_type === "image" ? "Photography" : "Video";
+            ["image", "photo"].includes(item.media_type)
+                ? "Photography"
+                : "Video / Film";
 
         const status = document.createElement("span");
         status.className = item.is_published
@@ -215,7 +222,39 @@ function renderMediaLibrary() {
             () => deleteMedia(item)
         );
 
-        actions.append(editButton, publishButton, deleteButton);
+        actions.append(editButton, publishButton);
+
+        if (["image", "photo"].includes(item.media_type)) {
+
+            const heroButton = document.createElement("button");
+
+            heroButton.className = "home-hero-action";
+
+            if (!item.is_published) {
+
+                heroButton.textContent = "Publish to use as hero";
+                heroButton.disabled = true;
+
+            } else if (currentHomeHero?.id === item.id) {
+
+                heroButton.textContent = "Current Home Hero";
+                heroButton.classList.add("is-current");
+                heroButton.disabled = true;
+
+            } else {
+
+                heroButton.textContent = "Set as Home Hero";
+
+                heroButton.addEventListener("click", () => {
+                    setHomeHero(item);
+                });
+
+            }
+
+            actions.appendChild(heroButton);
+        }
+
+        actions.appendChild(deleteButton);
 
         card.append(preview, details, actions);
         mediaGrid.appendChild(card);
@@ -427,6 +466,62 @@ editMediaForm.addEventListener(
     "submit",
     saveMediaChanges
 );
+// ==========================================
+// SET HOMEPAGE HERO IMAGE
+// ==========================================
+
+async function setHomeHero(item) {
+
+    if (!item || !item.is_published) {
+        showLibraryMessage(
+            "Only published photographs can be used as the home hero.",
+            true
+        );
+        return;
+    }
+
+    if (!["image", "photo"].includes(item.media_type)) {
+        return;
+    }
+
+    const confirmed = confirm(
+        `Set "${item.title}" as the homepage hero image?`
+    );
+
+    if (!confirmed) return;
+
+    showLibraryMessage("Updating homepage hero...");
+
+    try {
+
+        const { error } = await window.supabaseClient.rpc(
+            "set_home_hero",
+            {
+                p_media_id: String(item.id)
+            }
+        );
+
+        if (error) {
+            throw error;
+        }
+
+        await loadMediaLibrary();
+
+        showLibraryMessage(
+            `"${item.title}" is now the homepage hero image.`
+        );
+
+    } catch (error) {
+
+        console.error("Home hero update error:", error);
+
+        showLibraryMessage(
+            error.message || "Unable to update homepage hero.",
+            true
+        );
+
+    }
+}
 // Publish or unpublish media
 async function togglePublish(item) {
     const newStatus = !item.is_published;
