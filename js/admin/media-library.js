@@ -130,7 +130,7 @@ function renderMediaLibrary() {
     }
 
     const currentHomeHero = mediaItems.find(
-        item => item.is_home_hero && item.is_published &&
+        item => item.is_home_hero &&
             ["image", "photo"].includes(item.media_type)
     );
 
@@ -225,22 +225,26 @@ function renderMediaLibrary() {
 
         actions.append(editButton, publishButton);
 
-        // Only published photographs can be selected as the homepage hero.
+        // Published and unpublished photographs can both be selected.
+        // An unpublished selection appears on the homepage hero only; it
+        // remains excluded from public portfolio/featured-media queries.
         if (["image", "photo"].includes(item.media_type)) {
             const heroButton = document.createElement("button");
             heroButton.type = "button";
             heroButton.className = "home-hero-btn";
 
-            if (!item.is_published) {
-                heroButton.textContent = "Publish to use as hero";
-                heroButton.disabled = true;
-                heroButton.title = "Publish this photograph before selecting it.";
-            } else if (currentHomeHero && currentHomeHero.id === item.id) {
+            if (currentHomeHero && String(currentHomeHero.id) === String(item.id)) {
                 heroButton.textContent = "Current Home Hero";
                 heroButton.classList.add("is-current");
                 heroButton.disabled = true;
+                heroButton.title = item.is_published
+                    ? "This is the current homepage hero."
+                    : "This unpublished photograph is displayed only as the homepage hero.";
             } else {
                 heroButton.textContent = "Set as Home Hero";
+                heroButton.title = item.is_published
+                    ? "Use this photograph as the homepage hero."
+                    : "Use this draft as the homepage hero without publishing it to the portfolio.";
                 heroButton.addEventListener("click", () => {
                     setHomeHero(item, heroButton);
                 });
@@ -465,17 +469,20 @@ editMediaForm.addEventListener(
 // SET HOMEPAGE HERO IMAGE
 // ==========================================
 async function setHomeHero(item, button) {
-    if (!item || !item.is_published ||
-        !["image", "photo"].includes(item.media_type)) {
+    if (!item || !["image", "photo"].includes(item.media_type)) {
         showLibraryMessage(
-            "Only published photographs can be used as the homepage hero.",
+            "Only photographs can be used as the homepage hero.",
             true
         );
         return;
     }
 
+    const draftNotice = item.is_published
+        ? ""
+        : "\n\nThis photograph is unpublished. It will appear on the homepage hero only and will remain unpublished in the public portfolio.";
+
     const confirmed = confirm(
-        `Set "${item.title || "this photograph"}" as the homepage hero image?`
+        `Set "${item.title || "this photograph"}" as the homepage hero image?${draftNotice}`
     );
     if (!confirmed) return;
 
@@ -499,7 +506,9 @@ async function setHomeHero(item, button) {
 
         await loadMediaLibrary();
         showLibraryMessage(
-            `"${item.title || "Photograph"}" is now the homepage hero. Refresh the homepage to see it.`
+            item.is_published
+                ? `"${item.title || "Photograph"}" is now the homepage hero. Refresh the homepage to see it.`
+                : `"${item.title || "Photograph"}" is now the homepage hero. It remains unpublished in the portfolio.`
         );
     } catch (error) {
         console.error("Set home hero failed:", error);

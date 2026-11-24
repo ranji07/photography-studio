@@ -82,9 +82,19 @@ async function initializeHomepage() {
 
         loadPublishedVideos(),
 
-        loadPublishedCategories()
+        loadPublishedCategories(),
+
+        loadSelectedHomeHero()
 
     ]);
+
+    const selectedHomeHero = results[3].status === "fulfilled"
+        ? results[3].value
+        : null;
+
+    if (results[3].status === "rejected") {
+        console.error("Selected homepage hero could not be loaded:", results[3].reason);
+    }
 
 if (results[2].status === "fulfilled") {
 
@@ -102,7 +112,7 @@ if (results[2].status === "fulfilled") {
 
         const images = results[0].value;
 
-        renderHero(images);
+        renderHero(images, selectedHomeHero);
 
         renderFeaturedPhotography(images);
 
@@ -112,6 +122,10 @@ if (results[2].status === "fulfilled") {
             "Homepage photography error:",
             results[0].reason
         );
+
+        // The selected hero is loaded through a separate RPC, so it can
+        // still appear even if the public published-gallery query fails.
+        renderHero([], selectedHomeHero);
 
         showMessage(
             featuredImagesMessage,
@@ -213,6 +227,28 @@ async function loadPublishedImages() {
 
     return prioritizeFeaturedMedia(data || []);
 
+}
+
+
+// ==========================================
+// GET THE ADMIN-SELECTED HOME HERO
+// This RPC returns only the selected hero, even when its media record
+// is unpublished. Drafts are not added to the public portfolio query.
+// ==========================================
+
+async function loadSelectedHomeHero() {
+
+    const { data, error } = await supabaseClient.rpc("get_home_hero");
+
+    if (error) {
+        throw error;
+    }
+
+    if (Array.isArray(data)) {
+        return data[0] || null;
+    }
+
+    return data || null;
 }
 
 
@@ -399,24 +435,24 @@ async function loadPublishedCategories() {
 // RENDER DYNAMIC HERO
 // ==========================================
 
-function renderHero(images) {
+function renderHero(images, selectedHomeHero = null) {
 
-    if (!images.length) {
+    const publishedImages = Array.isArray(images) ? images : [];
 
+    // Prefer the separately fetched admin selection, even if unpublished.
+    // Otherwise preserve the existing featured/published fallback.
+    const selectedImage = selectedHomeHero || publishedImages.find(
+        image => image.is_home_hero
+    ) || publishedImages.find(
+        image => image.is_featured
+    ) || publishedImages[0] || null;
+
+    if (!selectedImage || !selectedImage.file_url) {
         heroImage.hidden = true;
-
         return;
-
     }
 
-
-    const selectedImage = images.find(
-        image => image.is_home_hero
-    ) || images.find(
-        image => image.is_featured
-    ) || images[0];
-
-
+    heroImage.hidden = false;
     heroImage.src = selectedImage.file_url;
 
     heroImage.alt =
@@ -442,7 +478,9 @@ function renderHero(images) {
 
     // Use another image for the About section.
 
-    const aboutSelectedImage = images[1] || selectedImage;
+    const aboutSelectedImage = publishedImages.find(
+        image => String(image.id) !== String(selectedImage.id)
+    ) || publishedImages[0] || selectedImage;
 
     aboutImage.src = aboutSelectedImage.file_url;
 
