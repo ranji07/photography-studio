@@ -128,11 +128,12 @@ function renderMediaLibrary() {
             "<p>No media found for the selected filters.</p>";
         return;
     }
-const currentHomeHero = mediaItems.find(item =>
-    item.is_home_hero &&
-    item.is_published &&
-    ["image", "photo"].includes(item.media_type)
-);
+
+    const currentHomeHero = mediaItems.find(
+        item => item.is_home_hero && item.is_published &&
+            ["image", "photo"].includes(item.media_type)
+    );
+
     filteredItems.forEach(item => {
         const category = categories.find(
             c => c.id === item.category_id
@@ -185,7 +186,7 @@ const currentHomeHero = mediaItems.find(item =>
         typeText.textContent =
             ["image", "photo"].includes(item.media_type)
                 ? "Photography"
-                : "Video / Film";
+                : "Video";
 
         const status = document.createElement("span");
         status.className = item.is_published
@@ -224,31 +225,25 @@ const currentHomeHero = mediaItems.find(item =>
 
         actions.append(editButton, publishButton);
 
+        // Only published photographs can be selected as the homepage hero.
         if (["image", "photo"].includes(item.media_type)) {
-
             const heroButton = document.createElement("button");
-
-            heroButton.className = "home-hero-action";
+            heroButton.type = "button";
+            heroButton.className = "home-hero-btn";
 
             if (!item.is_published) {
-
                 heroButton.textContent = "Publish to use as hero";
                 heroButton.disabled = true;
-
-            } else if (currentHomeHero?.id === item.id) {
-
+                heroButton.title = "Publish this photograph before selecting it.";
+            } else if (currentHomeHero && currentHomeHero.id === item.id) {
                 heroButton.textContent = "Current Home Hero";
                 heroButton.classList.add("is-current");
                 heroButton.disabled = true;
-
             } else {
-
                 heroButton.textContent = "Set as Home Hero";
-
                 heroButton.addEventListener("click", () => {
-                    setHomeHero(item);
+                    setHomeHero(item, heroButton);
                 });
-
             }
 
             actions.appendChild(heroButton);
@@ -469,59 +464,57 @@ editMediaForm.addEventListener(
 // ==========================================
 // SET HOMEPAGE HERO IMAGE
 // ==========================================
-
-async function setHomeHero(item) {
-
-    if (!item || !item.is_published) {
+async function setHomeHero(item, button) {
+    if (!item || !item.is_published ||
+        !["image", "photo"].includes(item.media_type)) {
         showLibraryMessage(
-            "Only published photographs can be used as the home hero.",
+            "Only published photographs can be used as the homepage hero.",
             true
         );
-        return;
-    }
-
-    if (!["image", "photo"].includes(item.media_type)) {
         return;
     }
 
     const confirmed = confirm(
-        `Set "${item.title}" as the homepage hero image?`
+        `Set "${item.title || "this photograph"}" as the homepage hero image?`
     );
-
     if (!confirmed) return;
+
+    const originalText = button ? button.textContent : "Set as Home Hero";
+    if (button) {
+        button.disabled = true;
+        button.textContent = "Updating...";
+    }
 
     showLibraryMessage("Updating homepage hero...");
 
     try {
+        const client = window.supabaseClient;
+        if (!client) throw new Error("Supabase client is not initialized.");
 
-        const { error } = await window.supabaseClient.rpc(
-            "set_home_hero",
-            {
-                p_media_id: String(item.id)
-            }
-        );
+        const { error } = await client.rpc("set_home_hero", {
+            p_media_id: String(item.id)
+        });
 
-        if (error) {
-            throw error;
-        }
+        if (error) throw error;
 
         await loadMediaLibrary();
-
         showLibraryMessage(
-            `"${item.title}" is now the homepage hero image.`
+            `"${item.title || "Photograph"}" is now the homepage hero. Refresh the homepage to see it.`
         );
-
     } catch (error) {
-
-        console.error("Home hero update error:", error);
-
+        console.error("Set home hero failed:", error);
         showLibraryMessage(
-            error.message || "Unable to update homepage hero.",
+            error.message || "Unable to update the homepage hero.",
             true
         );
-
+        if (button) {
+            button.disabled = false;
+            button.textContent = originalText;
+        }
     }
 }
+
+
 // Publish or unpublish media
 async function togglePublish(item) {
     const newStatus = !item.is_published;

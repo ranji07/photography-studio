@@ -355,30 +355,30 @@ body {
     }
 
 }
-/* ==========================================
-   HOME HERO SELECTION
-========================================== */
 
-.media-actions .home-hero-action {
+
+
+/* ================================================
+   HOMEPAGE HERO SELECTION
+================================================ */
+
+.media-actions .home-hero-btn {
     border: 1px solid #c6a568;
-    background: #25231f;
+    background: #24221d;
     color: #e0c58f;
 }
 
-.media-actions .home-hero-action:hover {
-    background: #c6a568;
-    color: #10100e;
-}
-
-.media-actions .home-hero-action.is-current {
+.media-actions .home-hero-btn:hover:not(:disabled) {
     border-color: #c6a568;
     background: #c6a568;
     color: #10100e;
+}
+
+.media-actions .home-hero-btn.is-current,
+.media-actions .home-hero-btn:disabled {
+    border-color: #c6a568;
+    background: #c6a568;
+    color: #10100e;
+    opacity: 0.85;
     cursor: default;
 }
-
-.media-actions .home-hero-action:disabled {
-    opacity: 0.7;
-    transform: none;
-}
-

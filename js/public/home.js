@@ -193,6 +193,9 @@ async function loadPublishedImages() {
 
         .eq("is_published", true)
 
+        // Always bring the explicitly selected hero into the first result.
+        .order("is_home_hero", { ascending: false })
+
         .order("is_featured", {
             ascending: false
         })
@@ -265,6 +268,13 @@ async function loadPublishedVideos() {
 function prioritizeFeaturedMedia(items) {
 
     return [...items].sort((a, b) => {
+
+        // Home hero has priority, without changing featured-work flags.
+        const heroPriority =
+            Number(Boolean(b.is_home_hero)) -
+            Number(Boolean(a.is_home_hero));
+
+        if (heroPriority !== 0) return heroPriority;
 
         return Number(Boolean(b.is_featured)) -
                Number(Boolean(a.is_featured));
